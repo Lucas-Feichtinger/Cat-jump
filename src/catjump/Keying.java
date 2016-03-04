@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class Keying extends JPanel{
 	
@@ -13,6 +15,9 @@ public class Keying extends JPanel{
 	
 	public boolean right = false;
 	public boolean left = false;
+	public boolean MouseListener = false;
+	
+	public Point mouse;
 	
 	public Keying(Display f, Images i){
 		character = new Rectangle(180, 180, charW, charH);
@@ -20,10 +25,15 @@ public class Keying extends JPanel{
 		f.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e){
 				if(e.getKeyCode() == KeyEvent.VK_D){
+					MouseListener = false;
 					right = true;
 				}
 				if(e.getKeyCode() == KeyEvent.VK_A){
+					MouseListener = false;
 					left = true;
+				}
+				if(e.getKeyCode() == KeyEvent.VK_M){
+					MouseListener = true;
 				}
 			}
 			
@@ -34,6 +44,17 @@ public class Keying extends JPanel{
 				if(e.getKeyCode() == KeyEvent.VK_A){
 					left = false;
 				}
+			}
+		});
+		
+		f.addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseMoved(MouseEvent e){
+				mouse = new Point(e.getX(), e.getY() -25);
+				if(MouseListener){
+					character.x = mouse.x;
+					character.y = mouse.y;
+				}
+				repaint();
 			}
 		});
 	}
