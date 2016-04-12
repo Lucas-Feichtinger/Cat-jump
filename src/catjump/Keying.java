@@ -4,18 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Keying extends JPanel implements ActionListener, Runnable {
+public class Keying extends JPanel implements ActionListener {
 	Cat c;
 	public Image img;
 	Timer time;
 	Thread animator;
 	int v = 588;
 
+	boolean falling = false;
 	boolean a = false;
 	boolean done2 = false;
 	boolean collision = false;
 
-	Toolkit tk = Toolkit.getDefaultToolkit();
 	int width = 1600;
 	int heigth = 768;
 
@@ -42,8 +42,14 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 
 	public void actionPerformed(ActionEvent e) {
 		collision();
-		if (collision == false)
+		if (collision == false) {
 			c.move();
+		}
+
+		collision();
+		if (falling == false && !c.jumping) {
+			c.KatzePosHoehe += 5;
+		}
 		repaint();
 	}
 
@@ -62,12 +68,6 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 		g2d.drawImage(img, 7485, 0, null);
 
 		g.translate(-c.getKatzePosLinks(), 0);
-
-		if (c.KatzenbewegungHoehe == 1 && done2 == false) {
-			done2 = true;
-			animator = new Thread(this);
-			animator.start();
-		}
 
 		// character
 		g2d.drawImage(c.getImage(), c.getKatzePosLinks(), c.getKatzePosHoehe(), null);
@@ -97,59 +97,21 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 		}
 	}
 
-	boolean h = false;
-	boolean done = false;
-
-	public void cycle() {
-
-		if (h == false)
-			c.KatzePosHoehe -= 4;
-		if (c.KatzePosHoehe == 340)
-			h = true;
-		if (h == true && c.KatzePosHoehe <= 552) {
-			c.KatzePosHoehe += 5;
-			if (c.KatzePosHoehe == 552) {
-				done = true;
-			}
-		}
-	}
-
-	public void run() {
-
-		long beforeTime, timeDiff, sleep;
-
-		beforeTime = System.currentTimeMillis();
-
-		while (done == false) {
-
-			cycle();
-
-			timeDiff = System.currentTimeMillis() - beforeTime;
-			sleep = 10 - timeDiff;
-
-			if (sleep < 0)
-				sleep = 2;
-			try {
-				Thread.sleep(sleep);
-			} catch (InterruptedException e) {
-				System.out.println("interrupted");
-			}
-
-			beforeTime = System.currentTimeMillis();
-		}
-		done = false;
-		h = false;
-		done2 = false;
-	}
-
 	public void collision() {
-		Rectangle rectangle1 = block1;
+		Rectangle bottomBox = BottomBox;
+		Rectangle rect1 = block1;
 		Rectangle cat = c.getCatBoundingBox();
 
-		if (rectangle1.intersects(cat)) {
+		if (rect1.intersects(cat)) {
 			collision = true;
 		} else {
 			collision = false;
+		}
+
+		if (bottomBox.intersects(cat)) {
+			falling = true;
+		} else {
+			falling = false;
 		}
 	}
 

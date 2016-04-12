@@ -14,26 +14,16 @@ public class Cat {
 	int KatzePosLinks, Katzenbewegung, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
-
+	boolean jumping = false;
+	
 	public Cat() {
 		catImg = i.getImage();
 		KatzePosLinks = 0;
-		KatzePosHoehe = 552;
-	}
-	
-	
-	public boolean beruehrung(Rectangle r1, Rectangle r2){
-		if(r1.contains(r2)){
-			return true;
-		}
-		else{
-			return false;
-		}
 	}
 	
 	public void move() {
 		KatzePosLinks = KatzePosLinks + Katzenbewegung;
-	}
+		}
 
 	public int getX() {
 		return KatzePosLinks;
@@ -57,7 +47,8 @@ public class Cat {
 			Katzenbewegung = -1;
 		}
 		if (key == KeyEvent.VK_SPACE) {
-			KatzenbewegungHoehe = 1;
+			jumping = true;
+			new Thread(new thread()).start();
 		}
 		if (key == KeyEvent.VK_W) {
 			KatzenbewegungHoehe = 1;
