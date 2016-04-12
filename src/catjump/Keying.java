@@ -24,7 +24,7 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 	public Keying() {
 		WallLeft = new Rectangle(0, 0, 10, 1500);
 		BottomBox = new Rectangle(0, heigth - 80, 10000, 50);
-		block1 = new Rectangle(1000, heigth - 1000, 400, 1200);
+		block1 = new Rectangle(1000, heigth - 250, 400, 300);
 		block2 = new Rectangle(1650, heigth - 400, 400, 100);
 		block3 = new Rectangle(2200, heigth - 500, 300, 80);
 		block4 = new Rectangle(2800, heigth - 370, 425, 80);
@@ -61,7 +61,7 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 		g2d.drawImage(img, 5485, 0, null);
 		g2d.drawImage(img, 7485, 0, null);
 
-		g.translate(-c.getKatzePosLinks() + c.left, 0);
+		g.translate(-c.getKatzePosLinks(), 0);
 
 		if (c.KatzenbewegungHoehe == 1 && done2 == false) {
 			done2 = true;
@@ -103,12 +103,12 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 	public void cycle() {
 
 		if (h == false)
-			v -= 4;
-		if (v == 348)
+			c.KatzePosHoehe -= 4;
+		if (c.KatzePosHoehe == 340)
 			h = true;
-		if (h == true && v <= 588) {
-			v += 5;
-			if (v == 588) {
+		if (h == true && c.KatzePosHoehe <= 552) {
+			c.KatzePosHoehe += 5;
+			if (c.KatzePosHoehe == 552) {
 				done = true;
 			}
 		}

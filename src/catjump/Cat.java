@@ -11,17 +11,14 @@ import Menu.EscMenu;
 
 public class Cat {
 	Keying k;
-	int KatzePosLinks, Katzenbewegung, KatzePosHoehe, BildschirmPosition, nx, KatzenbewegungHoehe, left;
+	int KatzePosLinks, Katzenbewegung, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
 
 	public Cat() {
 		catImg = i.getImage();
 		KatzePosLinks = 0;
-		left = 200;
-		KatzePosHoehe = 550;
-		BildschirmPosition = 1485;
-		nx = 0;
+		KatzePosHoehe = 552;
 	}
 	
 	
@@ -36,8 +33,6 @@ public class Cat {
 	
 	public void move() {
 		KatzePosLinks = KatzePosLinks + Katzenbewegung;
-		BildschirmPosition = BildschirmPosition + Katzenbewegung;
-		nx = nx + Katzenbewegung;
 	}
 
 	public int getX() {

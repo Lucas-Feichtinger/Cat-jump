@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 public class Main extends JFrame implements ActionListener {
 
+	// TODO next Florian week: Map initialisieren. Dia.
+	// TODO next Lucas week: Baum und Gras zeichnen. Map initialisieren.
+	
 	private JButton start;
 	private JButton einstellung;
 	private JButton info;
@@ -46,9 +49,6 @@ public class Main extends JFrame implements ActionListener {
 		ende.setBounds(120, 280, 160, 40);
 		ende.addActionListener(this);
 		add(ende);
-
-		// TODO next Florian week: Map initialisieren. Dia.
-		// TODO next Lucas week: Baum und Gras zeichnen. Map initialisieren.
 	}
 
 	public void actionPerformed(ActionEvent e) {
