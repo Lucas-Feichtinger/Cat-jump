@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Keying extends JPanel implements ActionListener {
+	
+	//TODO Lucas: Collisions und Jumping;
+	
 	Cat c;
 	public Image img;
 	Timer time;
