@@ -43,7 +43,14 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 	public void actionPerformed(ActionEvent e) {
 		collision();
 		if (collision == false)
+		{
 			c.move();
+		}
+		else
+		{
+			c.setKatzePosLinks(c.getKatzePosLinks()-1);
+			
+		}
 		repaint();
 	}
 
@@ -148,6 +155,7 @@ public class Keying extends JPanel implements ActionListener, Runnable {
 
 		if (rectangle1.intersects(cat)) {
 			collision = true;
+			
 		} else {
 			collision = false;
 		}
