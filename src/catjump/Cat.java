@@ -52,8 +52,8 @@ public class Cat {
 			Katzenbewegung = -1;
 		}
 		if (key == KeyEvent.VK_SPACE && space == false) {
-			space = true;
 			jumping = true;
+			space = true;
 			KatzenbewegungHoehe = -4;
 			new Thread(new thread(this)).start();
 		}
@@ -73,7 +73,6 @@ public class Cat {
 		}
 		
 		if (key == KeyEvent.VK_SPACE) {
-			space = false;
 			KatzenbewegungHoehe = 0;
 		}
 	}
@@ -104,5 +103,13 @@ public class Cat {
 
 	public void setJumping(boolean jumping) {
 		this.jumping = jumping;
+	}
+
+	public boolean isSpace() {
+		return space;
+	}
+
+	public void setSpace(boolean space) {
+		this.space = space;
 	}
 }
