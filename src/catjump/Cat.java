@@ -17,7 +17,7 @@ public class Cat {
 	
 	public Cat() {
 		catImg = i.getImage();
-		KatzePosLinks = 40;
+		KatzePosLinks = 0;
 
 		KatzePosHoehe = 580;
 	}

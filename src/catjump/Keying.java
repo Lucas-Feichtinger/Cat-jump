@@ -10,14 +10,11 @@ public class Keying extends JPanel implements ActionListener {
 
 	Cat c;
 	public Image img;
-	Timer time;
-	Thread animator;
-	int v = 588;
+	Timer time; //für Repaint
+	Thread animator; // für animationen
 
 	boolean falling = false;
-	boolean a = false;
 
-	boolean done2 = false;
 	boolean collisionRigth = false;
 	boolean collisionLeft = false;
 
