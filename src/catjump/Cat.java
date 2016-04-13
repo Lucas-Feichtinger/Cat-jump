@@ -7,23 +7,32 @@ import javax.swing.ImageIcon;
 
 import Menu.EscMenu;
 
-
-
 public class Cat {
 	Keying k;
 	int KatzePosLinks, Katzenbewegung, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
 	boolean jumping = false;
-	
+
 	public Cat() {
 		catImg = i.getImage();
 		KatzePosLinks = 0;
+
+		KatzePosHoehe = 580;
 	}
-	
+
+	public boolean beruehrung(Rectangle r1, Rectangle r2) {
+		if (r1.contains(r2)) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 	public void move() {
 		KatzePosLinks = KatzePosLinks + Katzenbewegung;
-		}
+	}
 
 	public int getX() {
 		return KatzePosLinks;
@@ -75,26 +84,22 @@ public class Cat {
 		}
 	}
 
-
 	public int getKatzePosLinks() {
 		return KatzePosLinks;
 	}
-
 
 	public void setKatzePosLinks(int katzePosLinks) {
 		KatzePosLinks = katzePosLinks;
 	}
 
-
 	public int getKatzePosHoehe() {
 		return KatzePosHoehe;
 	}
 
-
 	public void setKatzePosHoehe(int katzePosHoehe) {
 		KatzePosHoehe = katzePosHoehe;
 	}
-	
+
 	public Rectangle getCatBoundingBox() {
 		return new Rectangle(getKatzePosLinks(), getKatzePosHoehe(), 182, 100);
 	}

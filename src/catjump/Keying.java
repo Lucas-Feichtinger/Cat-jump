@@ -5,9 +5,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Keying extends JPanel implements ActionListener {
-	
-	//TODO Lucas: Collisions und Jumping;
-	
+
+	// TODO Lucas: Jumping; Florian: Kollision
+
 	Cat c;
 	public Image img;
 	Timer time;
@@ -46,18 +46,28 @@ public class Keying extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		collision();
+
 		if (collision == false) {
-			c.move();
-		}
 
-		collision();
-		if (falling == false && !c.jumping) {
-			c.KatzePosHoehe += 5;
+			if (collision == false) {
+
+				c.move();
+			}
+
+			else {
+				c.setKatzePosLinks(c.getKatzePosLinks() - 1);
+
+				collision();
+				if (falling == false && !c.jumping) {
+					c.KatzePosHoehe += 5;
+
+				}
+				repaint();
+			}
+
+			boolean k = false;
 		}
-		repaint();
 	}
-
-	boolean k = false;
 
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -108,6 +118,7 @@ public class Keying extends JPanel implements ActionListener {
 
 		if (rect1.intersects(cat)) {
 			collision = true;
+
 		} else {
 			collision = false;
 		}
