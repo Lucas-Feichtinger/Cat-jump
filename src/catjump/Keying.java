@@ -16,7 +16,7 @@ public class Keying extends JPanel implements ActionListener {
 
 	boolean falling = false;
 	boolean a = false;
-	
+
 	boolean done2 = false;
 	boolean collision = false;
 
@@ -48,25 +48,20 @@ public class Keying extends JPanel implements ActionListener {
 		collision();
 
 		if (collision == false) {
-
-			if (collision == false) {
-
-				c.move();
-			}
-
-			else {
-				c.setKatzePosLinks(c.getKatzePosLinks() - 1);
-
-				collision();
-				if (falling == false && !c.jumping) {
-					c.KatzePosHoehe += 5;
-
-				}
-				repaint();
-			}
-
-			boolean k = false;
+			c.move();
 		}
+		else{
+			c.setKatzePosLinks(c.getKatzePosLinks() - 1);
+		}
+
+		collision();
+		if (falling == false && !c.jumping) {
+			c.KatzePosHoehe += 5;
+		}
+		else{
+			c.jump();
+		}
+		repaint();
 	}
 
 	public void paint(Graphics g) {
@@ -128,6 +123,10 @@ public class Keying extends JPanel implements ActionListener {
 		} else {
 			falling = false;
 		}
+	}
+
+	public Cat getC() {
+		return c;
 	}
 
 }

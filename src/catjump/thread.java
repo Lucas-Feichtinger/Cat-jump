@@ -1,14 +1,21 @@
 package catjump;
 
-public class thread implements Runnable{
-		public long jumpingTime = 200;
-		public void run(){
-			try{
-				Thread.sleep(jumpingTime);
-			}catch(Exception e){
-				e.printStackTrace();
-				new Thread(this).start();
-				System.exit(0);
-			}
+public class thread implements Runnable {
+	public long jumpingTime = 400;
+	Cat c;
+
+	public thread(Cat c) {
+		this.c = c;
+	}
+
+	public void run() {
+		try {
+			Thread.sleep(jumpingTime);
+			c.setJumping(false);
+		} catch (Exception e) {
+			e.printStackTrace();
+			new Thread(this).start();
+			System.exit(0);
 		}
 	}
+}
