@@ -16,6 +16,7 @@ public class Keying extends JPanel implements ActionListener {
 
 	boolean falling = false;
 	boolean a = false;
+	
 	boolean done2 = false;
 	boolean collision = false;
 
