@@ -133,12 +133,15 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle rect2 = block.block2;
 		Rectangle rect2Top = block.block2Top;
 		Rectangle rect2Right = block.block2Right;
+		Rectangle rect2Bot = block.block2Bot;
 		Rectangle rect3 = block.block3;
 		Rectangle rect3Top = block.block3Top;
 		Rectangle rect3Right = block.block3Right;
+		Rectangle rect3Bot = block.block3Bot;
 		Rectangle rect4 = block.block4;
 		Rectangle rect4Top = block.block4Top;
 		Rectangle rect4Right = block.block4Right;
+		Rectangle rect4Bot = block.block4Bot;
 		Rectangle rect5 = block.block5;
 		Rectangle rect5Right = block.block5Right;
 		Rectangle rect5Bot = block.block5Bot;
@@ -171,7 +174,7 @@ public class Keying extends JPanel implements ActionListener {
 			falling = false;
 		}
 
-		if (rect5Bot.intersects(cat)) {
+		if (rect5Bot.intersects(cat) || rect2Bot.intersects(cat) || rect3Bot.intersects(cat) || rect4Bot.intersects(cat)) {
 			collisionBot = true;
 		} else {
 			collisionBot = false;
