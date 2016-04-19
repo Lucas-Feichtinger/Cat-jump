@@ -111,6 +111,10 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block4.x, block.block4.y, block.block4.width, block.block4.height);
 		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
 		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
+		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
+		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
+		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
+		
 	}
 
 	private class AL extends KeyAdapter {
