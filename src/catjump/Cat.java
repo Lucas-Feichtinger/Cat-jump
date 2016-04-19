@@ -13,10 +13,9 @@ public class Cat {
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
 	public boolean jumping = false;
-	public  boolean jump = false;
 	public boolean space = false;
 	public boolean inAir = false;
-	
+
 	public Cat() {
 		catImg = i.getImage();
 		KatzePosLinks = 0;
@@ -54,24 +53,26 @@ public class Cat {
 			Katzenbewegung = -2;
 		}
 
-		if (key == KeyEvent.VK_SPACE && jump == false && space == false) {
-			jumping = true;
-			KatzenbewegungHoehe = -10;
+		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 
-		if (key == KeyEvent.VK_SPACE && jump == false && space == false && inAir == false) {
-			jumping = true;
-			jump = true;
-			space = true;
-			KatzenbewegungHoehe = -5;
-			inAir = true;
-			KatzenbewegungHoehe = -4;
-			new Thread(new thread(this)).start();
+			if (key == KeyEvent.VK_SPACE && space == false) {
+				jumping = true;
+				KatzenbewegungHoehe = -10;
+
+				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
+					jumping = true;
+					space = true;
+					KatzenbewegungHoehe = -5;
+					inAir = true;
+					KatzenbewegungHoehe = -4;
+					new Thread(new thread(this)).start();
+				}
+				if (key == KeyEvent.VK_ESCAPE) {
+					EscMenu.main(null);
+				}
+			}
 		}
-		if (key == KeyEvent.VK_ESCAPE) {
-			EscMenu.main(null);
-		}
-	   }
-	}	
+	}
 
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -82,8 +83,8 @@ public class Cat {
 		if (key == KeyEvent.VK_A) {
 			Katzenbewegung = 0;
 		}
-		
-		if (key == KeyEvent.VK_SPACE ) {
+
+		if (key == KeyEvent.VK_SPACE) {
 			space = false;
 			KatzenbewegungHoehe = 0;
 		}
@@ -115,14 +116,6 @@ public class Cat {
 
 	public void setJumping(boolean jumping) {
 		this.jumping = jumping;
-	}
-
-	public boolean isJump() {
-		return jump;
-	}
-
-	public void setJump(boolean jump) {
-		this.jump = jump;
 	}
 
 	public boolean isInAir() {

@@ -47,21 +47,19 @@ public class Keying extends JPanel implements ActionListener {
 		} else if (collisionLeft == true) {
 			c.setKatzePosLinks(c.getKatzePosLinks() - 3);
 		}
-		
-		collision();
-		if (collisionBot == false) {
-			c.move();
-			falling = true;
-		}	else if (collisionBot == true) {
-			collision();
-			c.setKatzenbewegungHoehe(c.getKatzenbewegungHoehe() + 5);
-		}
 
 		collision();
 		if (falling == false && !c.jumping) {
 			c.KatzePosHoehe += 5;
 		} else {
 			c.jump();
+		}
+		
+		if (collisionBot == false) {
+			c.move();
+		}	else if (collisionBot == true) {
+			c.setKatzenbewegungHoehe(0);
+			falling = false;
 		}
 		repaint();
 	}
