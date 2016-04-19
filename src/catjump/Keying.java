@@ -108,6 +108,11 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle bottomBox = col.BottomBox;
 		Rectangle wallLeft = col.WallLeft;
 		Rectangle rect1 = col.block1;
+		Rectangle rect2 = col.block2;
+		Rectangle rect3 = col.block3;
+		Rectangle rect4 = col.block4;
+		Rectangle rect5 = col.block5;
+		Rectangle rect6 = col.block6;
 		Rectangle rect1Top = col.block1Top;
 		Rectangle rect2Top = col.block2Top;
 		Rectangle rect3Top = col.block3Top;
@@ -115,12 +120,14 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle rect6Top = col.block6Top;
 		Rectangle cat = c.getCatBoundingBox();
 
-		if (rect1.intersects(cat)) {
+		if (rect1.intersects(cat)|| rect2.intersects(cat)|| rect3.intersects(cat) || rect4.intersects(cat)|| rect5.intersects(cat) || rect6.intersects(cat)) {
 			collisionRigth = true;
 
 		} else {
 			collisionRigth = false;
 		}
+		
+
 
 		if (bottomBox.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat) ||  rect3Top.intersects(cat) || rect4Top.intersects(cat) || rect6Top.intersects(cat)){                          
 			falling = true;
