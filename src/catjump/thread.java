@@ -12,8 +12,6 @@ public class thread implements Runnable {
 		try {
 			Thread.sleep(jumpingTime);
 			c.setJumping(false);
-			Thread.sleep(330);
-			c.setJump(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 			new Thread(this).start();

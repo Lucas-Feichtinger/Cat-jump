@@ -13,7 +13,6 @@ public class Cat {
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
 	public boolean jumping = false;
-	public  boolean jump = false;
 	public boolean space = false;
 	public boolean inAir = false;
 	
@@ -53,9 +52,8 @@ public class Cat {
 		if (key == KeyEvent.VK_A) {
 			Katzenbewegung = -1;
 		}
-		if (key == KeyEvent.VK_SPACE && jump == false && space == false && inAir == false) {
+		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 			jumping = true;
-			jump = true;
 			space = true;
 			inAir = true;
 			KatzenbewegungHoehe = -4;
@@ -108,14 +106,6 @@ public class Cat {
 
 	public void setJumping(boolean jumping) {
 		this.jumping = jumping;
-	}
-
-	public boolean isJump() {
-		return jump;
-	}
-
-	public void setJump(boolean jump) {
-		this.jump = jump;
 	}
 
 	public boolean isInAir() {
