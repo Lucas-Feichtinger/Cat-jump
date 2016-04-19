@@ -13,11 +13,12 @@ public class Cat {
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
 	public boolean jumping = false;
-	public  boolean space = false;
+	public  boolean jump = false;
+	public boolean space = false;
 	
 	public Cat() {
 		catImg = i.getImage();
-		KatzePosLinks = 40;
+		KatzePosLinks = 0;
 
 		KatzePosHoehe = 580;
 	}
@@ -51,10 +52,13 @@ public class Cat {
 		if (key == KeyEvent.VK_A) {
 			Katzenbewegung = -2;
 		}
-		if (key == KeyEvent.VK_SPACE && space == false) {
-			space = true;
+		if (key == KeyEvent.VK_SPACE && jump == false && space == false) {
 			jumping = true;
 			KatzenbewegungHoehe = -11;
+
+			jump = true;
+			space = true;
+			KatzenbewegungHoehe = -5;
 			new Thread(new thread(this)).start();
 		}
 		if (key == KeyEvent.VK_ESCAPE) {
@@ -104,5 +108,13 @@ public class Cat {
 
 	public void setJumping(boolean jumping) {
 		this.jumping = jumping;
+	}
+
+	public boolean isJump() {
+		return jump;
+	}
+
+	public void setJump(boolean jump) {
+		this.jump = jump;
 	}
 }
