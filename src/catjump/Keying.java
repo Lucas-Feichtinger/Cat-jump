@@ -33,22 +33,22 @@ public class Keying extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		col.collision();
+		collision();
 
-		if (col.getCollisionRigth == false) {
+		if (collisionRigth == false) {
 			c.move();
 		} else {
 			c.setKatzePosLinks(c.getKatzePosLinks() - 4);
 		}
 
-		if (col.getCollisionLeft == false) {
+		if (collisionLeft == false) {
 			c.move();
 		} else if (collisionLeft == true) {
 			c.setKatzePosLinks(c.getKatzePosLinks() + 1);
 		}
 
-		col.collision();
-		if (col.getFalling == false && !c.jumping) {
+		collision();
+		if (falling == false && !c.jumping) {
 			c.KatzePosHoehe += 5;
 		} else {
 			c.jump();
@@ -76,22 +76,22 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
 
-		g.fillRect(block1Top.x, block1Top.y, block1Top.width, block1Top.height);
-		g.fillRect(block2Top.x, block2Top.y, block2Top.width, block2Top.height);
-		g.fillRect(block3Top.x, block3Top.y, block3Top.width, block3Top.height);
-		g.fillRect(block4Top.x, block4Top.y, block4Top.width, block4Top.height);
-		g.fillRect(block6Top.x, block6Top.y, block6Top.width, block6Top.height);
+		g.fillRect(col.block1Top.x, col.block1Top.y, col.block1Top.width, col.block1Top.height);
+		g.fillRect(col.block2Top.x, col.block2Top.y, col.block2Top.width, col.block2Top.height);
+		g.fillRect(col.block3Top.x, col.block3Top.y, col.block3Top.width, col.block3Top.height);
+		g.fillRect(col.block4Top.x, col.block4Top.y, col.block4Top.width, col.block4Top.height);
+		g.fillRect(col.block6Top.x, col.block6Top.y, col.block6Top.width, col.block6Top.height);
 		
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
-		g.fillRect(WallLeft.x, WallLeft.y, WallLeft.width, WallLeft.height);
-		g.fillRect(BottomBox.x, BottomBox.y, BottomBox.width, BottomBox.height);
-		g.fillRect(block1.x, block1.y, block1.width, block1.height);
-		g.fillRect(block2.x, block2.y, block2.width, block2.height);
-		g.fillRect(block3.x, block3.y, block3.width, block3.height);
-		g.fillRect(block4.x, block4.y, block4.width, block4.height);
-		g.fillRect(block5.x, block5.y, block5.width, block5.height);
-		g.fillRect(block6.x, block6.y, block6.width, block6.height);
+		g.fillRect(col.WallLeft.x, col.WallLeft.y, col.WallLeft.width, col.WallLeft.height);
+		g.fillRect(col.BottomBox.x, col.BottomBox.y, col.BottomBox.width, col.BottomBox.height);
+		g.fillRect(col.block1.x, col.block1.y, col.block1.width, col.block1.height);
+		g.fillRect(col.block2.x, col.block2.y, col.block2.width, col.block2.height);
+		g.fillRect(col.block3.x, col.block3.y, col.block3.width, col.block3.height);
+		g.fillRect(col.block4.x, col.block4.y, col.block4.width, col.block4.height);
+		g.fillRect(col.block5.x, col.block5.y, col.block5.width, col.block5.height);
+		g.fillRect(col.block6.x, col.block6.y, col.block6.width, col.block6.height);
 	}
 
 	private class AL extends KeyAdapter {
@@ -103,7 +103,33 @@ public class Keying extends JPanel implements ActionListener {
 			c.keyPressed(e);
 		}
 	}
+	
+	public void collision() {
+		Rectangle bottomBox = col.BottomBox;
+		Rectangle wallLeft = col.WallLeft;
+		Rectangle rect1 = col.block1;
+		Rectangle rect1Top = col.block1Top;
+		Rectangle rect2Top = col.block2Top;
+		Rectangle rect3Top = col.block3Top;
+		Rectangle rect4Top = col.block4Top;
+		Rectangle rect6Top = col.block6Top;
+		Rectangle cat = c.getCatBoundingBox();
 
+		if (rect1.intersects(cat)) {
+			collisionRigth = true;
+
+		} else {
+			collisionRigth = false;
+		}
+
+		if (bottomBox.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat) ||  rect3Top.intersects(cat) || rect4Top.intersects(cat) || rect6Top.intersects(cat)){                          
+			falling = true;
+			c.setInAir(false);
+		} else {
+			falling = false;
+		}
+	}
+	
 	public Cat getC() {
 		return c;
 	}
