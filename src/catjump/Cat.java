@@ -48,7 +48,7 @@ public class Cat {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_D) {
-			Katzenbewegung = 10;
+			Katzenbewegung = 4;
 		}
 		if (key == KeyEvent.VK_A) {
 			Katzenbewegung = -2;

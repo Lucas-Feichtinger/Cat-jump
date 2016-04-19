@@ -81,6 +81,10 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(col.block3Top.x, col.block3Top.y, col.block3Top.width, col.block3Top.height);
 		g.fillRect(col.block4Top.x, col.block4Top.y, col.block4Top.width, col.block4Top.height);
 		g.fillRect(col.block6Top.x, col.block6Top.y, col.block6Top.width, col.block6Top.height);
+		g.fillRect(col.block2Bot.x, col.block2Bot.y, col.block2Bot.width, col.block2Bot.height);
+		g.fillRect(col.block3Bot.x, col.block3Bot.y, col.block3Bot.width, col.block3Bot.height);
+		g.fillRect(col.block4Bot.x, col.block4Bot.y, col.block4Bot.width, col.block4Bot.height);
+		g.fillRect(col.block5Bot.x, col.block5Bot.y, col.block5Bot.width, col.block5Bot.height);
 		
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
