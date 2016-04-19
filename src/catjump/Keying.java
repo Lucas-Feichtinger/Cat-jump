@@ -11,9 +11,10 @@ public class Keying extends JPanel implements ActionListener {
 	Cat c;
 	blocks block;
 	public Image img;
-	Timer time; //für Repaint
+	Timer time; // für Repaint
 	Thread animator; // für animationen
 
+	boolean collisionBot = false;
 	boolean falling = false;
 	boolean collisionRigth = false;
 	boolean collisionLeft = false;
@@ -38,13 +39,22 @@ public class Keying extends JPanel implements ActionListener {
 		if (collisionRigth == false) {
 			c.move();
 		} else {
-			c.setKatzePosLinks(c.getKatzePosLinks() - 4);
+			c.setKatzePosLinks(c.getKatzePosLinks() + 3);
 		}
 
 		if (collisionLeft == false) {
 			c.move();
 		} else if (collisionLeft == true) {
-			c.setKatzePosLinks(c.getKatzePosLinks() + 1);
+			c.setKatzePosLinks(c.getKatzePosLinks() - 3);
+		}
+		
+		collision();
+		if (collisionBot == false) {
+			c.move();
+			falling = true;
+		}	else if (collisionBot == true) {
+			collision();
+			c.setKatzenbewegungHoehe(c.getKatzenbewegungHoehe() + 5);
 		}
 
 		collision();
@@ -86,6 +96,8 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block3Right.x, block.block3Right.y, block.block3Right.width, block.block3Right.height);
 		g.fillRect(block.block4Right.x, block.block4Right.y, block.block4Right.width, block.block4Right.height);
 		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
+		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
+		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
 
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
@@ -108,7 +120,7 @@ public class Keying extends JPanel implements ActionListener {
 			c.keyPressed(e);
 		}
 	}
-	
+
 	public void collision() {
 		Rectangle bottomBox = block.BottomBox;
 		Rectangle wallLeft = block.WallLeft;
@@ -121,24 +133,34 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle rect3Right = block.block3Right;
 		Rectangle rect4Top = block.block4Top;
 		Rectangle rect4Right = block.block4Right;
+		Rectangle rect5Right = block.block5Right;
+		Rectangle rect5Bot = block.block5Bot;
 		Rectangle rect6Top = block.block6Top;
+		Rectangle rect6Right = block.block6Right;
 		Rectangle cat = c.getCatBoundingBox();
 
-		if (rect2Right.intersects(cat) || rect2Right.intersects(cat) || rect3Right.intersects(cat) || rect4Right.intersects(cat)) {
+		if (rect1Right.intersects(cat) || rect2Right.intersects(cat) || rect3Right.intersects(cat)
+				|| rect4Right.intersects(cat) || rect5Right.intersects(cat) || rect6Right.intersects(cat)) {
 			collisionRigth = true;
-
 		} else {
 			collisionRigth = false;
 		}
 
-		if (bottomBox.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat) ||  rect3Top.intersects(cat) || rect4Top.intersects(cat) || rect6Top.intersects(cat)){                          
+		if (bottomBox.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat)
+				|| rect3Top.intersects(cat) || rect4Top.intersects(cat) || rect6Top.intersects(cat)) {
 			falling = true;
 			c.setInAir(false);
 		} else {
 			falling = false;
 		}
+
+		if (rect5Bot.intersects(cat)) {
+			collisionBot = true;
+		} else {
+			collisionBot = false;
+		}
 	}
-	
+
 	public Cat getC() {
 		return c;
 	}
