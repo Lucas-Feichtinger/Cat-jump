@@ -5,10 +5,6 @@ import java.awt.Rectangle;
 public class Collisions {
 	
 	Cat c = new Cat();
-	boolean falling = false;
-	boolean collisionRigth = false;
-	boolean collisionLeft = false;
-	
 	int heigth = 768;
 	public static Rectangle BottomBox, WallLeft, block1, block1Top, block2, block2Top, block3, block3Top, block4, block4Top, block5, block6, block6Top;
 	
@@ -26,55 +22,5 @@ public class Collisions {
 		block5 = new Rectangle(3450, heigth - 1125, 600, 500);
 		block6 = new Rectangle(3525, heigth - 440, 600, 500);
 		block6Top = new Rectangle(3525, heigth - 450, 600, 10);
-	}
-	
-	public void collision() {
-		Rectangle bottomBox = BottomBox;
-		Rectangle wallLeft = WallLeft;
-		Rectangle rect1 = block1;
-		Rectangle rect1Top = block1Top;
-		Rectangle rect2Top = block2Top;
-		Rectangle rect3Top = block3Top;
-		Rectangle rect4Top = block4Top;
-		Rectangle rect6Top = block6Top;
-		Rectangle cat = c.getCatBoundingBox();
-
-		if (rect1.intersects(cat)) {
-			collisionRigth = true;
-
-		} else {
-			collisionRigth = false;
-		}
-
-		if (bottomBox.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat) ||  rect3Top.intersects(cat) || rect4Top.intersects(cat) || rect6Top.intersects(cat)){                          
-			falling = true;
-			c.setInAir(false);
-		} else {
-			falling = false;
-		}
-	}
-
-	public boolean isFalling() {
-		return falling;
-	}
-
-	public void setFalling(boolean falling) {
-		this.falling = falling;
-	}
-
-	public boolean isCollisionRigth() {
-		return collisionRigth;
-	}
-
-	public void setCollisionRigth(boolean collisionRigth) {
-		this.collisionRigth = collisionRigth;
-	}
-
-	public boolean isCollisionLeft() {
-		return collisionLeft;
-	}
-
-	public void setCollisionLeft(boolean collisionLeft) {
-		this.collisionLeft = collisionLeft;
 	}
 }
