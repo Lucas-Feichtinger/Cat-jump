@@ -132,4 +132,12 @@ public class Cat {
 	public void setInAir(boolean inAir) {
 		this.inAir = inAir;
 	}
+
+	public int getKatzenbewegungHoehe() {
+		return KatzenbewegungHoehe;
+	}
+
+	public void setKatzenbewegungHoehe(int katzenbewegungHoehe) {
+		KatzenbewegungHoehe = katzenbewegungHoehe;
+	}
 }
