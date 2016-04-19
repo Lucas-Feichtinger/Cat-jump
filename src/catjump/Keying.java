@@ -9,7 +9,7 @@ public class Keying extends JPanel implements ActionListener {
 	// TODO Lucas: Jumping; Florian: Kollision
 
 	Cat c;
-	Collisions col;
+	blocks block;
 	public Image img;
 	Timer time; //für Repaint
 	Thread animator; // für animationen
@@ -22,7 +22,7 @@ public class Keying extends JPanel implements ActionListener {
 	int heigth = 768;
 
 	public Keying() {
-		col = new Collisions();
+		block = new blocks();
 		c = new Cat();
 		addKeyListener(new AL());
 		setFocusable(true);
@@ -76,22 +76,25 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
 
-		g.fillRect(col.block1Top.x, col.block1Top.y, col.block1Top.width, col.block1Top.height);
-		g.fillRect(col.block2Top.x, col.block2Top.y, col.block2Top.width, col.block2Top.height);
-		g.fillRect(col.block3Top.x, col.block3Top.y, col.block3Top.width, col.block3Top.height);
-		g.fillRect(col.block4Top.x, col.block4Top.y, col.block4Top.width, col.block4Top.height);
-		g.fillRect(col.block6Top.x, col.block6Top.y, col.block6Top.width, col.block6Top.height);
-		
+		g.fillRect(block.block1Top.x, block.block1Top.y, block.block1Top.width, block.block1Top.height);
+		g.fillRect(block.block2Top.x, block.block2Top.y, block.block2Top.width, block.block2Top.height);
+		g.fillRect(block.block3Top.x, block.block3Top.y, block.block3Top.width, block.block3Top.height);
+		g.fillRect(block.block4Top.x, block.block4Top.y, block.block4Top.width, block.block4Top.height);
+		g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
+		g.fillRect(block.block1Right.x, block.block1Right.y, block.block1Right.width, block.block1Right.height);
+		g.fillRect(block.block2Right.x, block.block2Right.y, block.block2Right.width, block.block2Right.height);
+		g.fillRect(block.block3Right.x, block.block3Right.y, block.block3Right.width, block.block3Right.height);
+
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
-		g.fillRect(col.WallLeft.x, col.WallLeft.y, col.WallLeft.width, col.WallLeft.height);
-		g.fillRect(col.BottomBox.x, col.BottomBox.y, col.BottomBox.width, col.BottomBox.height);
-		g.fillRect(col.block1.x, col.block1.y, col.block1.width, col.block1.height);
-		g.fillRect(col.block2.x, col.block2.y, col.block2.width, col.block2.height);
-		g.fillRect(col.block3.x, col.block3.y, col.block3.width, col.block3.height);
-		g.fillRect(col.block4.x, col.block4.y, col.block4.width, col.block4.height);
-		g.fillRect(col.block5.x, col.block5.y, col.block5.width, col.block5.height);
-		g.fillRect(col.block6.x, col.block6.y, col.block6.width, col.block6.height);
+		g.fillRect(block.WallLeft.x, block.WallLeft.y, block.WallLeft.width, block.WallLeft.height);
+		g.fillRect(block.BottomBox.x, block.BottomBox.y, block.BottomBox.width, block.BottomBox.height);
+		g.fillRect(block.block1.x, block.block1.y, block.block1.width, block.block1.height);
+		g.fillRect(block.block2.x, block.block2.y, block.block2.width, block.block2.height);
+		g.fillRect(block.block3.x, block.block3.y, block.block3.width, block.block3.height);
+		g.fillRect(block.block4.x, block.block4.y, block.block4.width, block.block4.height);
+		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
+		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
 	}
 
 	private class AL extends KeyAdapter {
@@ -105,14 +108,14 @@ public class Keying extends JPanel implements ActionListener {
 	}
 	
 	public void collision() {
-		Rectangle bottomBox = col.BottomBox;
-		Rectangle wallLeft = col.WallLeft;
-		Rectangle rect1 = col.block1;
-		Rectangle rect1Top = col.block1Top;
-		Rectangle rect2Top = col.block2Top;
-		Rectangle rect3Top = col.block3Top;
-		Rectangle rect4Top = col.block4Top;
-		Rectangle rect6Top = col.block6Top;
+		Rectangle bottomBox = block.BottomBox;
+		Rectangle wallLeft = block.WallLeft;
+		Rectangle rect1 = block.block1;
+		Rectangle rect1Top = block.block1Top;
+		Rectangle rect2Top = block.block2Top;
+		Rectangle rect3Top = block.block3Top;
+		Rectangle rect4Top = block.block4Top;
+		Rectangle rect6Top = block.block6Top;
 		Rectangle cat = c.getCatBoundingBox();
 
 		if (rect1.intersects(cat)) {
