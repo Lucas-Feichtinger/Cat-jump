@@ -84,6 +84,8 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block1Right.x, block.block1Right.y, block.block1Right.width, block.block1Right.height);
 		g.fillRect(block.block2Right.x, block.block2Right.y, block.block2Right.width, block.block2Right.height);
 		g.fillRect(block.block3Right.x, block.block3Right.y, block.block3Right.width, block.block3Right.height);
+		g.fillRect(block.block4Right.x, block.block4Right.y, block.block4Right.width, block.block4Right.height);
+		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
 
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
@@ -112,13 +114,17 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle wallLeft = block.WallLeft;
 		Rectangle rect1 = block.block1;
 		Rectangle rect1Top = block.block1Top;
+		Rectangle rect1Right = block.block1Right;
 		Rectangle rect2Top = block.block2Top;
+		Rectangle rect2Right = block.block2Right;
 		Rectangle rect3Top = block.block3Top;
+		Rectangle rect3Right = block.block3Right;
 		Rectangle rect4Top = block.block4Top;
+		Rectangle rect4Right = block.block4Right;
 		Rectangle rect6Top = block.block6Top;
 		Rectangle cat = c.getCatBoundingBox();
 
-		if (rect1.intersects(cat)) {
+		if (rect2Right.intersects(cat) || rect2Right.intersects(cat) || rect3Right.intersects(cat) || rect4Right.intersects(cat)) {
 			collisionRigth = true;
 
 		} else {
