@@ -48,7 +48,7 @@ public class Cat {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_D) {
-			Katzenbewegung = 2;
+			Katzenbewegung = 10;
 		}
 		if (key == KeyEvent.VK_A) {
 			Katzenbewegung = -2;
@@ -56,7 +56,7 @@ public class Cat {
 
 		if (key == KeyEvent.VK_SPACE && jump == false && space == false) {
 			jumping = true;
-			KatzenbewegungHoehe = -5;
+			KatzenbewegungHoehe = -10;
 
 		if (key == KeyEvent.VK_SPACE && jump == false && space == false && inAir == false) {
 			jumping = true;
