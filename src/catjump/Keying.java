@@ -84,6 +84,7 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
 
+
 		g.fillRect(block.block1Top.x, block.block1Top.y, block.block1Top.width, block.block1Top.height);
 		g.fillRect(block.block2Top.x, block.block2Top.y, block.block2Top.width, block.block2Top.height);
 		g.fillRect(block.block3Top.x, block.block3Top.y, block.block3Top.width, block.block3Top.height);
@@ -95,6 +96,9 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block4Right.x, block.block4Right.y, block.block4Right.width, block.block4Right.height);
 		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
 		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
+		g.fillRect(block.block2Bot.x, block.block2Bot.y, block.block2Bot.width, block.block2Bot.height);
+		g.fillRect(block.block3Bot.x, block.block3Bot.y, block.block3Bot.width, block.block3Bot.height);
+		g.fillRect(block.block4Bot.x, block.block4Bot.y, block.block4Bot.width, block.block4Bot.height);
 		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
 
 		g2d.setColor(Color.BLACK);
@@ -120,29 +124,44 @@ public class Keying extends JPanel implements ActionListener {
 	}
 
 	public void collision() {
+
 		Rectangle bottomBox = block.BottomBox;
 		Rectangle wallLeft = block.WallLeft;
 		Rectangle rect1 = block.block1;
 		Rectangle rect1Top = block.block1Top;
 		Rectangle rect1Right = block.block1Right;
+		Rectangle rect2 = block.block2;
 		Rectangle rect2Top = block.block2Top;
 		Rectangle rect2Right = block.block2Right;
+		Rectangle rect3 = block.block3;
 		Rectangle rect3Top = block.block3Top;
 		Rectangle rect3Right = block.block3Right;
+		Rectangle rect4 = block.block4;
 		Rectangle rect4Top = block.block4Top;
 		Rectangle rect4Right = block.block4Right;
+		Rectangle rect5 = block.block5;
 		Rectangle rect5Right = block.block5Right;
 		Rectangle rect5Bot = block.block5Bot;
+		Rectangle rect6 = block.block6;
 		Rectangle rect6Top = block.block6Top;
 		Rectangle rect6Right = block.block6Right;
 		Rectangle cat = c.getCatBoundingBox();
 
+		if (rect1.intersects(cat)|| rect2.intersects(cat)|| rect3.intersects(cat) || rect4.intersects(cat)|| rect5.intersects(cat) || rect6.intersects(cat)) {
+			collisionLeft = true;
+		} else {
+			collisionLeft = false;
+		}
+
 		if (rect1Right.intersects(cat) || rect2Right.intersects(cat) || rect3Right.intersects(cat)
 				|| rect4Right.intersects(cat) || rect5Right.intersects(cat) || rect6Right.intersects(cat)) {
+
 			collisionRigth = true;
 		} else {
 			collisionRigth = false;
 		}
+		
+
 
 		if (bottomBox.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat)
 				|| rect3Top.intersects(cat) || rect4Top.intersects(cat) || rect6Top.intersects(cat)) {
@@ -162,5 +181,10 @@ public class Keying extends JPanel implements ActionListener {
 	public Cat getC() {
 		return c;
 	}
+
+
+	
+	
+	
 
 }

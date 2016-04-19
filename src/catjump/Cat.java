@@ -15,7 +15,7 @@ public class Cat {
 	public boolean jumping = false;
 	public boolean space = false;
 	public boolean inAir = false;
-	
+
 	public Cat() {
 		catImg = i.getImage();
 		KatzePosLinks = 0;
@@ -47,20 +47,30 @@ public class Cat {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_D) {
-			Katzenbewegung = 2;
+			Katzenbewegung = 4;
 		}
 		if (key == KeyEvent.VK_A) {
-			Katzenbewegung = -1;
+			Katzenbewegung = -2;
 		}
+
 		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
-			jumping = true;
-			space = true;
-			inAir = true;
-			KatzenbewegungHoehe = -4;
-			new Thread(new thread(this)).start();
-		}
-		if (key == KeyEvent.VK_ESCAPE) {
-			EscMenu.main(null);
+
+			if (key == KeyEvent.VK_SPACE && space == false) {
+				jumping = true;
+				KatzenbewegungHoehe = -10;
+
+				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
+					jumping = true;
+					space = true;
+					KatzenbewegungHoehe = -5;
+					inAir = true;
+					KatzenbewegungHoehe = -4;
+					new Thread(new thread(this)).start();
+				}
+				if (key == KeyEvent.VK_ESCAPE) {
+					EscMenu.main(null);
+				}
+			}
 		}
 	}
 
@@ -73,7 +83,7 @@ public class Cat {
 		if (key == KeyEvent.VK_A) {
 			Katzenbewegung = 0;
 		}
-		
+
 		if (key == KeyEvent.VK_SPACE) {
 			space = false;
 			KatzenbewegungHoehe = 0;
