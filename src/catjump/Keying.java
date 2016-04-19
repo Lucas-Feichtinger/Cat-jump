@@ -11,6 +11,10 @@ public class Keying extends JPanel implements ActionListener {
 	Cat c;
 	blocks block;
 	public Image img;
+	public Image gras;
+	public Image gras1;
+	public Image gras2;
+	public Image gras0;
 	Timer time; // für Repaint
 	Thread animator; // für animationen
 
@@ -28,6 +32,14 @@ public class Keying extends JPanel implements ActionListener {
 		addKeyListener(new AL());
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("bg.png");
+		ImageIcon grass = new ImageIcon("grass.png");
+		ImageIcon grass0 = new ImageIcon("grass0.png");
+		ImageIcon grass1 = new ImageIcon("grass1.png");
+		ImageIcon grass2 = new ImageIcon("grass2.png");
+		gras = grass.getImage();
+		gras0 = grass0.getImage();
+		gras1 = grass1.getImage();
+		gras2 = grass2.getImage();
 		img = i.getImage();
 		time = new Timer(5, this);
 		time.start();
@@ -84,33 +96,32 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
 
-
-		g.fillRect(block.block1Top.x, block.block1Top.y, block.block1Top.width, block.block1Top.height);
-		g.fillRect(block.block2Top.x, block.block2Top.y, block.block2Top.width, block.block2Top.height);
-		g.fillRect(block.block3Top.x, block.block3Top.y, block.block3Top.width, block.block3Top.height);
 		g.fillRect(block.block4Top.x, block.block4Top.y, block.block4Top.width, block.block4Top.height);
 		g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
-		g.fillRect(block.block1Right.x, block.block1Right.y, block.block1Right.width, block.block1Right.height);
-		g.fillRect(block.block2Right.x, block.block2Right.y, block.block2Right.width, block.block2Right.height);
-		g.fillRect(block.block3Right.x, block.block3Right.y, block.block3Right.width, block.block3Right.height);
 		g.fillRect(block.block4Right.x, block.block4Right.y, block.block4Right.width, block.block4Right.height);
 		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
 		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
-		g.fillRect(block.block2Bot.x, block.block2Bot.y, block.block2Bot.width, block.block2Bot.height);
 		g.fillRect(block.block3Bot.x, block.block3Bot.y, block.block3Bot.width, block.block3Bot.height);
-		g.fillRect(block.block4Bot.x, block.block4Bot.y, block.block4Bot.width, block.block4Bot.height);
 		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
+		g.fillRect(block.block4Left.x, block.block4Left.y, block.block4Left.width, block.block4Left.height);
+		g.fillRect(block.block3Left.x, block.block3Left.y, block.block3Left.width, block.block3Left.height);
+		g.fillRect(block.block3Right.x, block.block3Right.y, block.block3Right.width, block.block3Right.height);
+		g.fillRect(block.block2Left.x, block.block2Left.y, block.block2Left.width, block.block2Left.height);
+		g.fillRect(block.block1Left.x, block.block1Left.y, block.block1Left.width, block.block1Left.height);
+		g.fillRect(block.block5Left.x, block.block5Left.y, block.block5Left.width, block.block5Left.height);
+		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
 
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
 		g.fillRect(block.WallLeft.x, block.WallLeft.y, block.WallLeft.width, block.WallLeft.height);
 		g.fillRect(block.BottomBox.x, block.BottomBox.y, block.BottomBox.width, block.BottomBox.height);
-		g.fillRect(block.block1.x, block.block1.y, block.block1.width, block.block1.height);
-		g.fillRect(block.block2.x, block.block2.y, block.block2.width, block.block2.height);
-		g.fillRect(block.block3.x, block.block3.y, block.block3.width, block.block3.height);
 		g.fillRect(block.block4.x, block.block4.y, block.block4.width, block.block4.height);
 		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
 		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
+		g2d.drawImage(gras, block.block1.x -10, block.block1.y - 10, null);
+		g2d.drawImage(gras2, block.block2.x -10, block.block2.y - 10 , null);
+		g2d.drawImage(gras1, block.block3.x -10, block.block3.y - 10 , null);
+		g2d.drawImage(gras0, block.BottomBox.x -10, block.BottomBox.y, null);
 	}
 
 	private class AL extends KeyAdapter {
@@ -127,30 +138,30 @@ public class Keying extends JPanel implements ActionListener {
 
 		Rectangle bottomBox = block.BottomBox;
 		Rectangle wallLeft = block.WallLeft;
-		Rectangle rect1 = block.block1;
+		Rectangle rect1Left = block.block1Left;
 		Rectangle rect1Top = block.block1Top;
 		Rectangle rect1Right = block.block1Right;
-		Rectangle rect2 = block.block2;
+		Rectangle rect2Left = block.block2;
 		Rectangle rect2Top = block.block2Top;
 		Rectangle rect2Right = block.block2Right;
 		Rectangle rect2Bot = block.block2Bot;
-		Rectangle rect3 = block.block3;
+		Rectangle rect3Left = block.block3Left;
 		Rectangle rect3Top = block.block3Top;
 		Rectangle rect3Right = block.block3Right;
 		Rectangle rect3Bot = block.block3Bot;
-		Rectangle rect4 = block.block4;
+		Rectangle rect4Left = block.block4Left;
 		Rectangle rect4Top = block.block4Top;
 		Rectangle rect4Right = block.block4Right;
 		Rectangle rect4Bot = block.block4Bot;
-		Rectangle rect5 = block.block5;
+		Rectangle rect5Left = block.block5Left;
 		Rectangle rect5Right = block.block5Right;
 		Rectangle rect5Bot = block.block5Bot;
-		Rectangle rect6 = block.block6;
+		Rectangle rect6Left = block.block6Left;
 		Rectangle rect6Top = block.block6Top;
 		Rectangle rect6Right = block.block6Right;
 		Rectangle cat = c.getCatBoundingBox();
 
-		if (rect1.intersects(cat)|| rect2.intersects(cat)|| rect3.intersects(cat) || rect4.intersects(cat)|| rect5.intersects(cat) || rect6.intersects(cat)) {
+		if (rect1Left.intersects(cat)|| rect2Left.intersects(cat)|| rect3Left.intersects(cat) || rect4Left.intersects(cat)|| rect5Left.intersects(cat) || rect6Left.intersects(cat)) {
 			collisionLeft = true;
 		} else {
 			collisionLeft = false;
