@@ -6,8 +6,7 @@ public class blocks {
 	
 	Cat c = new Cat();
 	int heigth = 768;
-	public static Rectangle BottomBox, WallLeft, block1, block1Top, block1Right, block1Left, block2, block2Left, block2Top, block2Bot, block2Right, block3, block3Top, block3Bot, block3Right, block3Left, block4, block4Top, block4Bot, block4Left, block4Right, block5, block5Right, block5Left, block5Bot, block6, block6Top, block6Right, block6Left;
-	
+	public static Rectangle BottomBox, WallLeft, block1, block1Top, block1Right, block1Left, block2, block2Left, block2Top, block2Bot, block2Right, block3, block3Top, block3Bot, block3Right, block3Left, block4, block4Top, block4Bot, block4Left, block4Right, block5, block5Right, block5Left, block5Bot, block6, block6Top, block6Right, block6Left,  block7, block8, block9;
 	public blocks() {
 		WallLeft = new Rectangle(0, 0, 10, 1500);
 		BottomBox = new Rectangle(0, heigth - 80, 10000, 50);
@@ -38,5 +37,8 @@ public class blocks {
 		block6Left = new Rectangle(3525, heigth - 440, 10, 500);
 		block6Top = new Rectangle(3525, heigth - 450, 600, 10);
 		block6Right = new Rectangle(4115, heigth - 440, 10, 500);
+		block7 = new Rectangle (4275, heigth - 280, 290, 70);
+		block8 = new Rectangle (4800, heigth - 1175, 140,790);
+		block9 = new Rectangle (4800, heigth - 200,140,150);
 	}
 }

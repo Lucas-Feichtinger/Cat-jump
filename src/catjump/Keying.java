@@ -122,6 +122,10 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(gras2, block.block2.x -10, block.block2.y - 10 , null);
 		g2d.drawImage(gras1, block.block3.x -10, block.block3.y - 10 , null);
 		g2d.drawImage(gras0, block.BottomBox.x -10, block.BottomBox.y, null);
+		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
+		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
+		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
+		
 	}
 
 	private class AL extends KeyAdapter {
