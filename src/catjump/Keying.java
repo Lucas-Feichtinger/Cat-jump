@@ -7,6 +7,7 @@ import java.awt.event.*;
 public class Keying extends JPanel implements ActionListener {
 
 	// TODO Lucas: Jumping; Florian: Kollision
+	
 
 	Cat c;
 	blocks block;
@@ -18,10 +19,11 @@ public class Keying extends JPanel implements ActionListener {
 	Timer time; // für Repaint
 	Thread animator; // für animationen
 
-	boolean collisionBot = false;
-	boolean falling = false;
-	boolean collisionRigth = false;
-	boolean collisionLeft = false;
+	public boolean collisionBot = false;
+	public boolean falling = false;
+	public boolean collisionRigth = false;
+	public boolean collisionLeft = false;
+	public boolean dead = false;
 
 	int width = 1600;
 	int heigth = 768;
@@ -47,7 +49,8 @@ public class Keying extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		collision();
-
+		
+		if(dead != true){
 		if (collisionRigth == false) {
 			c.move();
 		} else {
@@ -74,13 +77,14 @@ public class Keying extends JPanel implements ActionListener {
 			falling = false;
 		}
 		repaint();
+		}
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
 
 		Graphics2D g2d = (Graphics2D) g;
-
+		
 		// background
 		g2d.drawImage(img, 0, 0, null);
 		g2d.drawImage(img, 1485, 0, null);
@@ -95,22 +99,19 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle b = c.getCatBoundingBox();
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
-
+		
 		g.fillRect(block.block4Top.x, block.block4Top.y, block.block4Top.width, block.block4Top.height);
 		g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
 		g.fillRect(block.block4Right.x, block.block4Right.y, block.block4Right.width, block.block4Right.height);
 		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
 		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
-		g.fillRect(block.block3Bot.x, block.block3Bot.y, block.block3Bot.width, block.block3Bot.height);
 		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
 		g.fillRect(block.block4Left.x, block.block4Left.y, block.block4Left.width, block.block4Left.height);
-		g.fillRect(block.block3Left.x, block.block3Left.y, block.block3Left.width, block.block3Left.height);
-		g.fillRect(block.block3Right.x, block.block3Right.y, block.block3Right.width, block.block3Right.height);
-		g.fillRect(block.block2Left.x, block.block2Left.y, block.block2Left.width, block.block2Left.height);
-		g.fillRect(block.block1Left.x, block.block1Left.y, block.block1Left.width, block.block1Left.height);
 		g.fillRect(block.block5Left.x, block.block5Left.y, block.block5Left.width, block.block5Left.height);
 		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
 
+		g.fillRect(block.spike1.x,block.spike1.y, block.spike1.width, block.spike1.height);
+		
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
 		g.fillRect(block.WallLeft.x, block.WallLeft.y, block.WallLeft.width, block.WallLeft.height);
@@ -125,6 +126,10 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
 		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
 		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
+		
+		if (dead == true){
+			g.drawString("You died!", 2000, 400);
+		}
 		
 	}
 
@@ -163,6 +168,7 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle rect6Left = block.block6Left;
 		Rectangle rect6Top = block.block6Top;
 		Rectangle rect6Right = block.block6Right;
+		Rectangle spikeRect1 = block.spike1;
 		Rectangle cat = c.getCatBoundingBox();
 
 		if (rect1Left.intersects(cat)|| rect2Left.intersects(cat)|| rect3Left.intersects(cat) || rect4Left.intersects(cat)|| rect5Left.intersects(cat) || rect6Left.intersects(cat)) {
@@ -193,6 +199,12 @@ public class Keying extends JPanel implements ActionListener {
 			collisionBot = true;
 		} else {
 			collisionBot = false;
+		}
+		
+		if (spikeRect1.intersects(cat)){
+			dead = true;
+		} else {
+			dead = false;
 		}
 	}
 

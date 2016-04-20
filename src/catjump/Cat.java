@@ -9,6 +9,7 @@ import Menu.EscMenu;
 
 public class Cat {
 	Keying k;
+	EscMenu esc = new EscMenu(null);
 	int KatzePosLinks, Katzenbewegung, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
@@ -18,7 +19,7 @@ public class Cat {
 
 	public Cat() {
 		catImg = i.getImage();
-		KatzePosLinks = 0;
+		KatzePosLinks = 200;
 
 		KatzePosHoehe = 580;
 	}
@@ -48,11 +49,15 @@ public class Cat {
 
 		if (key == KeyEvent.VK_D) {
 
-			Katzenbewegung = 8;
+			Katzenbewegung = 1;
 		}
 		if (key == KeyEvent.VK_A) {
 
-			Katzenbewegung = -8;
+			Katzenbewegung = -1;
+		}
+		
+		if (key == KeyEvent.VK_ESCAPE) {
+			esc.main(null);
 		}
 
 		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
@@ -60,7 +65,7 @@ public class Cat {
 			if (key == KeyEvent.VK_SPACE && space == false) {
 				jumping = true;
 
-				KatzenbewegungHoehe = -14;
+				KatzenbewegungHoehe = -4;
 
 				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 					jumping = true;
