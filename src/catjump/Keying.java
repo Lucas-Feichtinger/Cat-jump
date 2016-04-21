@@ -15,7 +15,8 @@ public class Keying extends JPanel implements ActionListener {
 	public Image gras;
 	public Image gras1;
 	public Image gras2;
-	public Image gras0;
+	public Image bot1;
+	public Image bot2;
 	Timer time; // für Repaint
 	Thread animator; // für animationen
 
@@ -38,8 +39,11 @@ public class Keying extends JPanel implements ActionListener {
 		ImageIcon grass0 = new ImageIcon("grass0.png");
 		ImageIcon grass1 = new ImageIcon("grass1.png");
 		ImageIcon grass2 = new ImageIcon("grass2.png");
+		ImageIcon boden1 = new ImageIcon("bot1.png");
+		ImageIcon boden2 = new ImageIcon("bot2.png");
 		gras = grass.getImage();
-		gras0 = grass0.getImage();
+		bot1 = boden1.getImage();
+		bot2 = boden2.getImage();
 		gras1 = grass1.getImage();
 		gras2 = grass2.getImage();
 		img = i.getImage();
@@ -115,14 +119,15 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
 		g.fillRect(block.WallLeft.x, block.WallLeft.y, block.WallLeft.width, block.WallLeft.height);
-		g.fillRect(block.BottomBox.x, block.BottomBox.y, block.BottomBox.width, block.BottomBox.height);
+		g.fillRect(block.boden3.x, block.boden3.y, block.boden3.width, block.boden3.height);
 		g.fillRect(block.block4.x, block.block4.y, block.block4.width, block.block4.height);
 		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
 		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
 		g2d.drawImage(gras, block.block1.x -10, block.block1.y - 10, null);
 		g2d.drawImage(gras2, block.block2.x -10, block.block2.y - 10 , null);
 		g2d.drawImage(gras1, block.block3.x -10, block.block3.y - 10 , null);
-		g2d.drawImage(gras0, block.BottomBox.x -10, block.BottomBox.y, null);
+		g2d.drawImage(bot1, block.boden1.x, block.boden1.y, null);
+		g2d.drawImage(bot2, block.boden2.x, block.boden2.y, null);
 		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
 		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
 		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
@@ -144,9 +149,12 @@ public class Keying extends JPanel implements ActionListener {
 	}
 
 	public void collision() {
-
-		Rectangle bottomBox = block.BottomBox;
-		Rectangle wallLeft = block.WallLeft;
+		Rectangle bot1 = block.boden1;
+		Rectangle bot2 = block.boden2;
+		Rectangle bot3 = block.boden3;
+		Rectangle pit1 = block.grube1;
+		Rectangle pit2 = block.grube2;
+		Rectangle wall1 = block.WallLeft;
 		Rectangle rect1Left = block.block1Left;
 		Rectangle rect1Top = block.block1Top;
 		Rectangle rect1Right = block.block1Right;
@@ -177,7 +185,7 @@ public class Keying extends JPanel implements ActionListener {
 			collisionLeft = false;
 		}
 
-		if (rect1Right.intersects(cat) || rect2Right.intersects(cat) || rect3Right.intersects(cat)
+		if (wall1.intersects(cat) || rect1Right.intersects(cat) || rect2Right.intersects(cat) || rect3Right.intersects(cat)
 				|| rect4Right.intersects(cat) || rect5Right.intersects(cat) || rect6Right.intersects(cat)) {
 
 			collisionRigth = true;
@@ -187,7 +195,7 @@ public class Keying extends JPanel implements ActionListener {
 		
 
 
-		if (bottomBox.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat)
+		if (bot1.intersects(cat) || bot2.intersects(cat) || bot3.intersects(cat) || rect1Top.intersects(cat) || rect2Top.intersects(cat)
 				|| rect3Top.intersects(cat) || rect4Top.intersects(cat) || rect6Top.intersects(cat)) {
 			falling = true;
 			c.setInAir(false);
@@ -201,7 +209,7 @@ public class Keying extends JPanel implements ActionListener {
 			collisionBot = false;
 		}
 		
-		if (spikeRect1.intersects(cat)){
+		if (spikeRect1.intersects(cat) || pit1.intersects(cat) || pit2.intersects(cat)){
 			dead = true;
 		} else {
 			dead = false;
