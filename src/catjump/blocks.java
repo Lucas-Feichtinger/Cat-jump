@@ -6,11 +6,10 @@ public class blocks {
 	
 	Cat c = new Cat();
 	int heigth = 768;
-	public static Rectangle BottomBox, WallLeft, block1, block1Top, block1Right, block1Left, block2, block2Left, block2Top, block2Bot, block2Right, block3, block3Top, block3Bot, block3Right, block3Left, block4, block4Top, block4Bot, block4Left, block4Right, block5, block5Right, block5Left, block5Bot, block6, block6Top, block6Right, block6Left,  block7, block8, block9;
-	public static Rectangle spike1;
+	public static Rectangle WallLeft, block1, block1Top, block1Right, block1Left, block2, block2Left, block2Top, block2Bot, block2Right, block3, block3Top, block3Bot, block3Right, block3Left, block4, block4Top, block4Bot, block4Left, block4Right, block5, block5Right, block5Left, block5Bot, block6, block6Top, block6Right, block6Left,  block7, block8, block9;
+	public static Rectangle spike1, grube1, grube2, boden1, boden2, boden3;
 	public blocks() {
 		WallLeft = new Rectangle(0, 0, 10, 1500);
-		BottomBox = new Rectangle(0, heigth - 80, 10000, 50);
 		block1 = new Rectangle(1010, heigth - 240, 380, 300);
 		block1Top = new Rectangle(1000, heigth - 250, 400, 10);
 		block1Right = new Rectangle(1390, heigth - 240, 10, 290);
@@ -20,11 +19,11 @@ public class blocks {
 		block2Top = new Rectangle(1650, heigth - 400, 400, 10);
 		block2Right = new Rectangle(2040, heigth - 390, 10, 90);
 		block2Bot = new Rectangle (1650, heigth -300, 400, 10);
-		block3 = new Rectangle(2210, heigth - 490, 280, 70);
-		block3Left = new Rectangle(2200, heigth - 490, 10, 70);
-		block3Top  = new Rectangle(2200, heigth - 500, 300, 10);
-		block3Bot = new Rectangle(2200,heigth - 420, 300, 10);
-		block3Right = new Rectangle(2490, heigth - 490, 10, 70);
+		block3 = new Rectangle(2190, heigth - 490, 280, 70);
+		block3Left = new Rectangle(2180, heigth - 490, 10, 70);
+		block3Top  = new Rectangle(2180, heigth - 500, 300, 10);
+		block3Bot = new Rectangle(2180,heigth - 420, 300, 10);
+		block3Right = new Rectangle(2480, heigth - 490, 10, 70);
 		block4 = new Rectangle(2810, heigth - 360, 405, 70);
 		block4Top = new Rectangle(2800, heigth - 370, 425, 10);
 		block4Right = new Rectangle(3215, heigth - 360, 10, 70);
@@ -42,6 +41,12 @@ public class blocks {
 		block8 = new Rectangle (4800, heigth - 1175, 140,790);
 		block9 = new Rectangle (4800, heigth - 200,140,150);
 		
-		spike1 = new Rectangle (1990, heigth - 430, 60, 30);
+		grube1 = new Rectangle (1400, heigth - 40, 250, 300);
+		grube2 = new Rectangle (3225, heigth - 40, 300, 300);
+		spike1 = new Rectangle (1990, heigth - 460, 60, 60);
+		
+		boden1 = new Rectangle(0, heigth - 80, 1400, 50);
+		boden2 = new Rectangle(1650, heigth - 80, 1600, 50);
+		boden3 = new Rectangle(3825, heigth - 80, 7000, 50);
 	}
 }
