@@ -58,18 +58,18 @@ public class Keying extends JPanel implements ActionListener {
 		if (collisionRigth == false) {
 			c.move();
 		} else {
-			c.setKatzePosLinks(c.getKatzePosLinks() + 3);
+			c.setKatzePosLinks(c.getKatzePosLinks() + 4);
 		}
 
 		if (collisionLeft == false) {
 			c.move();
 		} else if (collisionLeft == true) {
-			c.setKatzePosLinks(c.getKatzePosLinks() - 3);
+			c.setKatzePosLinks(c.getKatzePosLinks() - 4);
 		}
 
 		collision();
 		if (falling == false && !c.jumping) {
-			c.KatzePosHoehe += 5;
+			c.KatzePosHoehe += 7;
 		} else {
 			c.jump();
 		}
