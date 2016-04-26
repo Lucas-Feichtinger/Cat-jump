@@ -9,7 +9,8 @@ import Menu.EscMenu;
 
 public class Cat {
 	Keying k;
-	int KatzePosLinks, Katzenbewegung, KatzePosHoehe, KatzenbewegungHoehe;
+	EscMenu esc = new EscMenu(null);
+	int KatzenPos, movement, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
 	public boolean jumping = false;
@@ -18,13 +19,13 @@ public class Cat {
 
 	public Cat() {
 		catImg = i.getImage();
-		KatzePosLinks = 0;
+		KatzenPos = 200;
 
 		KatzePosHoehe = 580;
 	}
 
 	public void move() {
-		KatzePosLinks = KatzePosLinks + Katzenbewegung;
+		KatzenPos = KatzenPos + movement;
 	}
 
 	public void jump() {
@@ -32,7 +33,7 @@ public class Cat {
 	}
 
 	public int getX() {
-		return KatzePosLinks;
+		return KatzenPos;
 	}
 
 	public int getY() {
@@ -48,11 +49,15 @@ public class Cat {
 
 		if (key == KeyEvent.VK_D) {
 
-			Katzenbewegung = 8;
+			movement = 2;
 		}
 		if (key == KeyEvent.VK_A) {
 
-			Katzenbewegung = -8;
+			movement = -2;
+		}
+		
+		if (key == KeyEvent.VK_ESCAPE) {
+			esc.main(null);
 		}
 
 		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
@@ -60,7 +65,9 @@ public class Cat {
 			if (key == KeyEvent.VK_SPACE && space == false) {
 				jumping = true;
 
-				KatzenbewegungHoehe = -6;
+
+				KatzenbewegungHoehe = -8;
+
 
 				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 					jumping = true;
@@ -79,10 +86,10 @@ public class Cat {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_D) {
-			Katzenbewegung = 0;
+			movement = 0;
 		}
 		if (key == KeyEvent.VK_A) {
-			Katzenbewegung = 0;
+			movement = 0;
 		}
 
 		if (key == KeyEvent.VK_SPACE) {
@@ -92,11 +99,11 @@ public class Cat {
 	}
 
 	public int getKatzePosLinks() {
-		return KatzePosLinks;
+		return KatzenPos;
 	}
 
 	public void setKatzePosLinks(int katzePosLinks) {
-		KatzePosLinks = katzePosLinks;
+		KatzenPos = katzePosLinks;
 	}
 
 	public int getKatzePosHoehe() {
