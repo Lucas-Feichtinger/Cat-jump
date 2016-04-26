@@ -40,9 +40,9 @@ public class blocks {
 		block6Top = new Rectangle(3525, heigth - 450, 600, 10);
 		block6Right = new Rectangle(4115, heigth - 440, 10, 500);
 		block7 = new Rectangle (4275, heigth - 280, 290, 70);
-		block7Left = new Rectangle(4265, heigth - 280, 10, 10);
-		block7Top = new Rectangle(4265, heigth - 290,10,10);
-		block7Rigth = new Rectangle (4545, heigth - 280,10,10);
+		block7Left = new Rectangle(4265, heigth - 280, 10, 70);
+		block7Top = new Rectangle(4285, heigth - 290,10,10);
+		block7Rigth = new Rectangle (4345, heigth - 280,10,70);
 		block7Bot = new Rectangle (4265, heigth -210,310,10);
 		block8 = new Rectangle (4800, heigth - 1175, 140,790);
 		block9 = new Rectangle (4800, heigth - 200,140,150);
