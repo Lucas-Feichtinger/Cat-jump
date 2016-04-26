@@ -100,7 +100,7 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(img, 5485, 0, null);
 		g2d.drawImage(img, 7485, 0, null);
 
-		if(!dead)
+		if (!dead)
 			g.translate(-c.getKatzePosLinks(), 0);
 
 		// character
@@ -121,7 +121,7 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block7Top.x, block.block7Top.y, block.block7Top.width, block.block7Top.height);
 		g.fillRect(block.block7Rigth.x, block.block7Rigth.y, block.block7Rigth.width, block.block7Rigth.height);
 		g.fillRect(block.block7Bot.x, block.block7Bot.y, block.block7Bot.width, block.block7Bot.height);
-		g.fillRect(block.spike1.x,block.spike1.y, block.spike1.width, block.spike1.height);
+		g.fillRect(block.spike1.x, block.spike1.y, block.spike1.width, block.spike1.height);
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
 		g2d.drawImage(gras, block.block1.x - 10, block.block1.y - 10, null);
@@ -144,7 +144,6 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
 		g.fillRect(block.block15.x, block.block15.y, block.block15.width, block.block15.height);
 
-	
 		if (dead == true) {
 			Font test = new Font("Arial", Font.BOLD, 80);
 			g.setFont(test);
