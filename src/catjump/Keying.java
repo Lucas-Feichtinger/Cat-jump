@@ -100,13 +100,8 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(img, 5485, 0, null);
 		g2d.drawImage(img, 7485, 0, null);
 
-		if (dead == true) {
-			Font test = new Font("Arial", Font.BOLD, 80);
-			g.setFont(test);
-			g2d.drawString("You died!", 600, 350);
-		}
-
-		g.translate(-c.getKatzePosLinks(), 0);
+		if(!dead)
+			g.translate(-c.getKatzePosLinks(), 0);
 
 		// character
 		g2d.drawImage(c.getImage(), c.getKatzePosLinks() + 200, c.getKatzePosHoehe(), null);
@@ -135,7 +130,7 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(bot1, block.boden1.x, block.boden1.y, null);
 		g2d.drawImage(bot2, block.boden2.x, block.boden2.y, null);
 		g2d.drawImage(gras3, block.block4.x - 10, block.block4.y - 10, null);
-		g2d.drawImage(gras4, block.WallLeft.x - 390, block.WallLeft.y + 100, null);
+		g2d.drawImage(gras4, block.WallLeft.x - 390, block.WallLeft.y + 130, null);
 		g.fillRect(block.boden3.x, block.boden3.y, block.boden3.width, block.boden3.height);
 		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
 		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
@@ -147,10 +142,14 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block11.x, block.block11.y, block.block11.width, block.block11.height);
 		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
 		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
-		if (dead == true){
-			g.drawString("You died!", 2000, 400);
-		}
+		g.fillRect(block.block15.x, block.block15.y, block.block15.width, block.block15.height);
 
+	
+		if (dead == true) {
+			Font test = new Font("Arial", Font.BOLD, 80);
+			g.setFont(test);
+			g2d.drawString("You died!", 530, 350);
+		}
 	}
 
 	private class AL extends KeyAdapter {
