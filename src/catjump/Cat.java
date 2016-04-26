@@ -49,11 +49,14 @@ public class Cat {
 
 		if (key == KeyEvent.VK_D) {
 
-			movement = 1;
+			movement = 2;
+
 		}
 		if (key == KeyEvent.VK_A) {
 
+
 			movement = -1;
+
 		}
 
 		if (key == KeyEvent.VK_ESCAPE) {
