@@ -49,15 +49,15 @@ public class Cat {
 
 		if (key == KeyEvent.VK_D) {
 
-			movement = 2;
+			movement = 1;
 		}
 		if (key == KeyEvent.VK_A) {
 
-			movement = -2;
+			movement = -1;
 		}
-		
+
 		if (key == KeyEvent.VK_ESCAPE) {
-			esc.main(null);
+			EscMenu.main(null);
 		}
 
 		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
@@ -65,7 +65,7 @@ public class Cat {
 			if (key == KeyEvent.VK_SPACE && space == false) {
 				jumping = true;
 
-				KatzenbewegungHoehe = -8;
+				KatzenbewegungHoehe = -4;
 
 				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 					jumping = true;
@@ -113,7 +113,7 @@ public class Cat {
 	}
 
 	public Rectangle getCatBoundingBox() {
-		return new Rectangle(getKatzePosLinks(), getKatzePosHoehe(), 182, 100);
+		return new Rectangle(getKatzePosLinks() + 200, getKatzePosHoehe(), 150, 80);
 	}
 
 	public boolean isJumping() {
