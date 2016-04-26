@@ -110,6 +110,10 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block1Left.x, block.block1Left.y, block.block1Left.width, block.block1Left.height);
 		g.fillRect(block.block5Left.x, block.block5Left.y, block.block5Left.width, block.block5Left.height);
 		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
+		g.fillRect(block.block7Left.x, block.block7Left.y, block.block7Left.width, block.block7Left.height);
+		g.fillRect(block.block7Top.x, block.block7Top.y, block.block7Top.width, block.block7Top.height);
+		g.fillRect(block.block7Rigth.x, block.block7Rigth.y, block.block7Rigth.width, block.block7Rigth.height);
+		g.fillRect(block.block7Bot.x, block.block7Bot.y, block.block7Bot.width, block.block7Bot.height);
 
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
@@ -125,6 +129,10 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
 		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
 		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
+		g.fillRect(block.block10.x, block.block10.y, block.block10.width, block.block10.height);
+		g.fillRect(block.block11.x, block.block11.y, block.block11.width, block.block11.height);
+		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
+		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
 		
 	}
 

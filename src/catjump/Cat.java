@@ -60,7 +60,7 @@ public class Cat {
 			if (key == KeyEvent.VK_SPACE && space == false) {
 				jumping = true;
 
-				KatzenbewegungHoehe = -14;
+				KatzenbewegungHoehe = -6;
 
 				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 					jumping = true;

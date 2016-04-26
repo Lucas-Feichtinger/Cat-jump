@@ -6,7 +6,7 @@ public class blocks {
 	
 	Cat c = new Cat();
 	int heigth = 768;
-	public static Rectangle BottomBox, WallLeft, block1, block1Top, block1Right, block1Left, block2, block2Left, block2Top, block2Bot, block2Right, block3, block3Top, block3Bot, block3Right, block3Left, block4, block4Top, block4Bot, block4Left, block4Right, block5, block5Right, block5Left, block5Bot, block6, block6Top, block6Right, block6Left,  block7, block8, block9;
+	public static Rectangle BottomBox, WallLeft, block1, block1Top, block1Right, block1Left, block2, block2Left, block2Top, block2Bot, block2Right, block3, block3Top, block3Bot, block3Right, block3Left, block4, block4Top, block4Bot, block4Left, block4Right, block5, block5Right, block5Left, block5Bot, block6, block6Top, block6Right, block6Left,  block7, block7Top, block7Rigth, block7Left, block7Bot, block8, block8Bot, block8Rigth, block8Left, block9, block9Top, block9Rigtht, block9Left, block10, block10Top, block10Bot, block10Rigth, block10Left, block11, block11Top, block11Bot, block11Rigth, block11Left, block12, block12Top, block12Bot, block12Rigth, block12Left, block13, block13Top, block13Rigth, block13Left, block14, block14Bot, block14Rigth, block14Left;
 	public blocks() {
 		WallLeft = new Rectangle(0, 0, 10, 1500);
 		BottomBox = new Rectangle(0, heigth - 80, 10000, 50);
@@ -38,7 +38,15 @@ public class blocks {
 		block6Top = new Rectangle(3525, heigth - 450, 600, 10);
 		block6Right = new Rectangle(4115, heigth - 440, 10, 500);
 		block7 = new Rectangle (4275, heigth - 280, 290, 70);
+		block7Left = new Rectangle(4265, heigth - 280, 10, 10);
+		block7Top = new Rectangle(4265, heigth - 290,10,10);
+		block7Rigth = new Rectangle (4545, heigth - 280,10,10);
+		block7Bot = new Rectangle (4265, heigth -210,310,10);
 		block8 = new Rectangle (4800, heigth - 1175, 140,790);
 		block9 = new Rectangle (4800, heigth - 200,140,150);
+		block10 = new Rectangle (5150, heigth - 325, 270, 65);
+		block11 = new Rectangle (5700, heigth - 375, 135, 65);
+		block12 = new Rectangle (6050, heigth - 405, 200, 65);
+		block13 = new Rectangle (6450, heigth - 300, 465, 750);
 	}
 }
