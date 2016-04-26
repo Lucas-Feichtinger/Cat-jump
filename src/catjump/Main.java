@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main extends JFrame implements ActionListener {
-	
+
 	private JButton start;
 	private JButton einstellung;
 	private JButton info;

@@ -22,7 +22,6 @@ public class EscMenu extends JFrame implements ActionListener {
 		frame.setLayout(null);
 		frame.setVisible(true);
 	}
-	
 
 	public EscMenu(String title) {
 		super(title);
@@ -47,9 +46,9 @@ public class EscMenu extends JFrame implements ActionListener {
 
 		if (e.getSource() == restart) {
 			this.dispose();
-			JFrame f= new JFrame();
+			JFrame f = new JFrame();
 			f.add(new Keying());
-			f.setSize(xSize , ySize);
+			f.setSize(xSize, ySize);
 			f.setVisible(true);
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			f.setTitle("Cat Jump");

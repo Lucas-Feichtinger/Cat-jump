@@ -1,7 +1,7 @@
 package catjump;
 
 public class thread implements Runnable {
-	public long jumpingTime = 300;
+	public long jumpingTime = 340;
 	Cat c;
 
 	public thread(Cat c) {
