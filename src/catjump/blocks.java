@@ -15,9 +15,9 @@ public class blocks {
 			block8Rigth, block8Left, block9, block9Top, block9Rigth, block9Left, block10, block10Top, block10Bot,
 			block10Rigth, block10Left, block11, block11Top, block11Bot, block11Rigth, block11Left, block12, block12Top,
 			block12Bot, block12Rigth, block12Left, block13, block13Top, block13Rigth, block13Left, block14, block14Bot,
-			block14Rigth, block14Left, block15, block16;
+			block14Rigth, block14Left, block15, block16, block7Right;
 
-	public static Rectangle spike1, grube1, grube2, boden1, boden2, boden3;
+	public static Rectangle spike1, grube1, grube2, boden1, boden2, boden3, Lazer1;
 
 	public blocks() {
 		WallLeft = new Rectangle(0, 0, 10, 1500);
@@ -48,18 +48,20 @@ public class blocks {
 		block6Left = new Rectangle(3525, heigth - 440, 10, 500);
 		block6Top = new Rectangle(3525, heigth - 450, 600, 10);
 		block6Right = new Rectangle(4115, heigth - 440, 10, 500);
-
-		block7 = new Rectangle(4275, heigth - 280, 290, 70);
-		block8 = new Rectangle(4800, heigth - 1175, 140, 790);
-		block9 = new Rectangle(4800, heigth - 200, 140, 150);
-		block8Left = new Rectangle(4790, heigth - 1175, 10, 790);
-		block8Bot = new Rectangle(4790, heigth - 385, 160, 10);
-		block8Rigth = new Rectangle(4940, heigth - 1175, 10, 790);
-		block9 = new Rectangle(4800, heigth - 200, 140, 150);
-		block9Top = new Rectangle(4790, heigth - 210, 10, 150);
-		block9Left = new Rectangle(4790, heigth - 200, 10, 170);
-		block9Rigth = new Rectangle(4940, heigth - 200, 10, 170);
-		block9 = new Rectangle(4800, heigth - 200, 140, 150);
+		block7 = new Rectangle(4285, heigth - 280, 280, 80);
+		block7Left = new Rectangle(4275, heigth - 280, 10, 80);
+		block7Top = new Rectangle(4275, heigth - 290, 300, 10);
+		block7Rigth = new Rectangle(4565, heigth - 280, 10, 80);
+		block7Bot = new Rectangle(4275, heigth - 200, 300, 10);
+		block8 = new Rectangle(4700, heigth - 1110, 140, 490);
+		block8Left = new Rectangle(4690, heigth - 1110, 10, 490);
+		block8Bot = new Rectangle(4690, heigth - 620, 160, 10);
+		block8Rigth = new Rectangle(4840, heigth - 1110, 10, 490);
+		block9 = new Rectangle(4700, heigth - 370, 140, 370);
+		block9Top = new Rectangle(4690, heigth - 380, 160, 10);
+		block9Left = new Rectangle(4690, heigth - 370, 10, 370);
+		block9Rigth = new Rectangle(4840, heigth - 370, 10, 370);
+		
 		block10 = new Rectangle(5150, heigth - 325, 270, 65);
 		block11 = new Rectangle(5700, heigth - 375, 135, 65);
 		block12 = new Rectangle(6050, heigth - 405, 200, 65);
@@ -67,6 +69,7 @@ public class blocks {
 		block15 = new Rectangle(6915, heigth - 600, 465, 750);
 		block16 = new Rectangle(6450, heigth - 300, 465, 750);
 
+		Lazer1 = new Rectangle(4690, heigth - 390, 160, 10);
 		grube1 = new Rectangle(1400, heigth - 40, 250, 300);
 		grube2 = new Rectangle(3225, heigth - 40, 300, 300);
 		spike1 = new Rectangle(1990, heigth - 460, 60, 60);

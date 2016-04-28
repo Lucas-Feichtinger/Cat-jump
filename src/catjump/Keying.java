@@ -62,13 +62,13 @@ public class Keying extends JPanel implements ActionListener {
 			if (collisionRigth == false) {
 				c.move();
 			} else {
-				c.setKatzePosLinks(c.getKatzePosLinks() + 4);
+				c.setKatzePos(c.getKatzePos() + 4);
 			}
 
 			if (collisionLeft == false) {
 				c.move();
 			} else if (collisionLeft == true) {
-				c.setKatzePosLinks(c.getKatzePosLinks() - 4);
+				c.setKatzePos(c.getKatzePos() - 4);
 			}
 
 			collision();
@@ -100,8 +100,10 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(img, 5485, 0, null);
 		g2d.drawImage(img, 7485, 0, null);
 
+		g.translate(-c.getKatzePos(), 0);
+		
 		// character
-		g2d.drawImage(c.getImage(), c.getKatzePosLinks() + 200, c.getKatzePosHoehe(), null);
+		g2d.drawImage(c.getImage(), c.getKatzePos() + 200, c.getKatzePosHoehe(), null);
 		Rectangle b = c.getCatBoundingBox();
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
@@ -119,7 +121,12 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block8Bot.x, block.block8Bot.y, block.block8Bot.width, block.block8Bot.height);
 		g.fillRect(block.block8Rigth.x, block.block8Rigth.y, block.block8Rigth.width, block.block8Rigth.height);
 		g.fillRect(block.block8Left.x, block.block8Left.y, block.block8Left.width, block.block8Left.height);
+		g.fillRect(block.block9Left.x, block.block9Left.y, block.block9Left.width, block.block9Left.height);
+		g.fillRect(block.block9Top.x, block.block9Top.y, block.block9Top.width, block.block9Top.height);
+		g.fillRect(block.block9Rigth.x, block.block9Rigth.y, block.block9Rigth.width, block.block9Rigth.height);
 		g.fillRect(block.spike1.x,block.spike1.y, block.spike1.width, block.spike1.height);
+		g.fillRect(block.Lazer1.x,block.Lazer1.y, block.Lazer1.width, block.Lazer1.height);
+
 
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
@@ -136,11 +143,12 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
 		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
 		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
-		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
 		g.fillRect(block.block10.x, block.block10.y, block.block10.width, block.block10.height);
 		g.fillRect(block.block11.x, block.block11.y, block.block11.width, block.block11.height);
 		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
 		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
+		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
+
 
 	}
 
@@ -182,19 +190,33 @@ public class Keying extends JPanel implements ActionListener {
 		Rectangle rect6Left = block.block6Left;
 		Rectangle rect6Top = block.block6Top;
 		Rectangle rect6Right = block.block6Right;
+		Rectangle rect7Left = block.block7Left;
+		Rectangle rect7Top = block.block7Top;
+		Rectangle rect7Right = block.block7Rigth;
+		Rectangle rect7Bot = block.block7Bot;
+		Rectangle rect8Left = block.block8Left;
+		Rectangle rect8Right = block.block8Rigth;
+		Rectangle rect8Bot = block.block8Bot;
+		Rectangle rect9Left = block.block9Left;
+		Rectangle rect9Right = block.block9Rigth;
+		Rectangle rect9Top = block.block9Top;
 		Rectangle spikeRect1 = block.spike1;
+		Rectangle lazerRect1 = block.Lazer1;
+		
 		Rectangle cat = c.getCatBoundingBox();
 
 		if (rect1Left.intersects(cat) || rect2Left.intersects(cat) || rect3Left.intersects(cat)
-				|| rect4Left.intersects(cat) || rect5Left.intersects(cat) || rect6Left.intersects(cat)) {
+				|| rect4Left.intersects(cat) || rect5Left.intersects(cat) || rect6Left.intersects(cat)
+				|| rect7Left.intersects(cat) || rect8Left.intersects(cat) || rect9Left.intersects(cat)) {
 			collisionLeft = true;
 		} else {
 			collisionLeft = false;
 		}
 
 		if (wall1.intersects(cat) || rect1Right.intersects(cat) || rect2Right.intersects(cat)
-				|| rect3Right.intersects(cat) || rect4Right.intersects(cat) || rect5Right.intersects(cat)
-				|| rect6Right.intersects(cat)) {
+				|| rect3Right.intersects(cat) || rect4Right.intersects(cat) || rect5Right.intersects(cat) 
+				|| rect7Right.intersects(cat) || rect6Right.intersects(cat) || rect8Right.intersects(cat)
+				|| rect9Right.intersects(cat)) {
 
 			collisionRigth = true;
 		} else {
@@ -203,7 +225,7 @@ public class Keying extends JPanel implements ActionListener {
 
 		if (bot1.intersects(cat) || bot2.intersects(cat) || bot3.intersects(cat) || rect1Top.intersects(cat)
 				|| rect2Top.intersects(cat) || rect3Top.intersects(cat) || rect4Top.intersects(cat)
-				|| rect6Top.intersects(cat)) {
+				|| rect6Top.intersects(cat) || rect7Top.intersects(cat) || rect9Top.intersects(cat)) {
 			falling = true;
 			c.setInAir(false);
 		} else {
@@ -211,13 +233,14 @@ public class Keying extends JPanel implements ActionListener {
 		}
 
 		if (rect5Bot.intersects(cat) || rect2Bot.intersects(cat) || rect3Bot.intersects(cat)
-				|| rect4Bot.intersects(cat)) {
+				|| rect4Bot.intersects(cat) || rect7Bot.intersects(cat) || rect8Bot.intersects(cat)) {
 			collisionBot = true;
 		} else {
 			collisionBot = false;
 		}
 
-		if (spikeRect1.intersects(cat) || pit1.intersects(cat) || pit2.intersects(cat)) {
+		if (spikeRect1.intersects(cat) || pit1.intersects(cat) || pit2.intersects(cat)
+			|| lazerRect1.intersects(cat)) {
 			dead = true;
 		} else {
 			dead = false;

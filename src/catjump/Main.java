@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 public class Main extends JFrame implements ActionListener {
 
+	//TODO Lucas: welt weiter bauen
 	private JButton start;
 	private JButton einstellung;
 	private JButton info;

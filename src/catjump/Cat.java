@@ -68,7 +68,7 @@ public class Cat {
 			if (key == KeyEvent.VK_SPACE && space == false) {
 				jumping = true;
 				
-				KatzenbewegungHoehe = -4;
+				KatzenbewegungHoehe = -5;
 
 				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 					jumping = true;
@@ -99,11 +99,11 @@ public class Cat {
 		}
 	}
 
-	public int getKatzePosLinks() {
+	public int getKatzePos() {
 		return KatzenPos;
 	}
 
-	public void setKatzePosLinks(int katzePosLinks) {
+	public void setKatzePos(int katzePosLinks) {
 		KatzenPos = katzePosLinks;
 	}
 
@@ -116,7 +116,7 @@ public class Cat {
 	}
 
 	public Rectangle getCatBoundingBox() {
-		return new Rectangle(getKatzePosLinks() + 200, getKatzePosHoehe(), 150, 80);
+		return new Rectangle(getKatzePos() + 200, getKatzePosHoehe(), 150, 80);
 	}
 
 	public boolean isJumping() {
