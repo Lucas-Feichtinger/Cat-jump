@@ -9,7 +9,7 @@ public class Keying extends JPanel implements ActionListener {
 	// TODO Lucas: Jumping; Florian: Kollision
 
 	Cat c;
-	blocks block;
+	Blocks block;
 	public Image img;
 	public Image gras;
 	public Image gras1;
@@ -26,11 +26,13 @@ public class Keying extends JPanel implements ActionListener {
 	public boolean collisionRigth = false;
 	public boolean collisionLeft = false;
 	public boolean dead = false;
-
+	public static boolean escape = false;
+	
 	int width = 1600;
 	int heigth = 768;
 
 	public Keying() {
+		block = new Blocks();
 		c = new Cat();
 		addKeyListener(new AL());
 		setFocusable(true);
@@ -85,6 +87,10 @@ public class Keying extends JPanel implements ActionListener {
 			}
 			repaint();
 		}
+		else if(dead = true && escape == false){
+			new Thread(new ThreadEndScreen(this)).start();
+		}
+		
 	}
 
 	public void paint(Graphics g) {
@@ -109,19 +115,14 @@ public class Keying extends JPanel implements ActionListener {
 		
 		g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
 		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
-		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
-
 		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
 		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
 		g.fillRect(block.block5Left.x, block.block5Left.y, block.block5Left.width, block.block5Left.height);
-		
+		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
 		g.fillRect(block.block7Left.x, block.block7Left.y, block.block7Left.width, block.block7Left.height);
 		g.fillRect(block.block7Top.x, block.block7Top.y, block.block7Top.width, block.block7Top.height);
 		g.fillRect(block.block7Rigth.x, block.block7Rigth.y, block.block7Rigth.width, block.block7Rigth.height);
 		g.fillRect(block.block7Bot.x, block.block7Bot.y, block.block7Bot.width, block.block7Bot.height);
-
-		g.fillRect(block.spike1.x, block.spike1.y, block.spike1.width, block.spike1.height);
-		
 		g.fillRect(block.block8Bot.x, block.block8Bot.y, block.block8Bot.width, block.block8Bot.height);
 		g.fillRect(block.block8Rigth.x, block.block8Rigth.y, block.block8Rigth.width, block.block8Rigth.height);
 		g.fillRect(block.block8Left.x, block.block8Left.y, block.block8Left.width, block.block8Left.height);
@@ -150,14 +151,10 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block10.x, block.block10.y, block.block10.width, block.block10.height);
 		g.fillRect(block.block11.x, block.block11.y, block.block11.width, block.block11.height);
 		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
+		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
 		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
 
 
-		if (dead == true) {
-			Font test = new Font("Arial", Font.BOLD, 80);
-			g.setFont(test);
-			g2d.drawString("You died!", 530, 350);
-		}
 	}
 
 	private class AL extends KeyAdapter {
@@ -258,5 +255,13 @@ public class Keying extends JPanel implements ActionListener {
 	public Cat getC() {
 		return c;
 	}
-  
+	
+
+	public static boolean isEscape() {
+		return escape;
+	}
+
+	public static void setEscape(boolean escape) {
+		Keying.escape = escape;
+	}
 }

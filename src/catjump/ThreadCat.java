@@ -1,10 +1,10 @@
 package catjump;
 
-public class thread implements Runnable {
+public class ThreadCat implements Runnable {
 	public long jumpingTime = 350;
 	Cat c;
 
-	public thread(Cat c) {
+	public ThreadCat(Cat c) {
 		this.c = c;
 	}
 

@@ -74,7 +74,7 @@ public class Cat {
 					jumping = true;
 					space = true;
 					inAir = true;
-					new Thread(new thread(this)).start();
+					new Thread(new ThreadCat(this)).start();
 				}
 				if (key == KeyEvent.VK_ESCAPE) {
 					EscMenu.main(null);
