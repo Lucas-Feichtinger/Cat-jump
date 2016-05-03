@@ -15,10 +15,10 @@ public class blocks {
 			block4Bot, block4Left, block4Right, block5, block5Right, block5Left, block5Bot, block6, block6Top,
 			block6Right, block6Left, block7, block7Top, block7Rigth, block7Left, block7Bot, block8, block8Bot,
 			block8Rigth, block8Left, block9, block9Top, block9Rigth, block9Left, block10, block10Top, block10Bot,
-			block10Rigth, block10Left, block11, block11Top, block11Bot, block11Rigth, block11Left, block12, block12Top,
-			block12Bot, block12Rigth, block12Left, block13, block13Top, block13Rigth, block13Left;
+			block10Rigth, block10Left, block11, block11Top, block11Bot, block11Rigth, block11Left, block12, block12Top
+			,block13, block14, block14Bot, block14Rigth, block14Left, block15, block16, block7Right;
 
-	public static Rectangle spike1, grube1, grube2, boden1, boden2, boden3;
+	public static Rectangle spike1, grube1, grube2, boden1, boden2, boden3, Lazer1;
 
 	public blocks() {
 		blocks.add(WallLeft = new Rectangle(0, 0, 10, 1500));
@@ -65,11 +65,22 @@ public class blocks {
 		block9Left = new Rectangle(4790, heigth - 200, 10, 170);
 		block9Rigth = new Rectangle(4940, heigth - 200, 10, 170);
 		block9 = new Rectangle(4800, heigth - 200, 140, 150);
+		block7Bot = new Rectangle(4275, heigth - 200, 300, 10);
+		block8 = new Rectangle(4700, heigth - 1110, 140, 490);
+		block8Left = new Rectangle(4690, heigth - 1110, 10, 490);
+		block8Bot = new Rectangle(4690, heigth - 620, 160, 10);
+		block8Rigth = new Rectangle(4840, heigth - 1110, 10, 490);
+		block9 = new Rectangle(4700, heigth - 370, 140, 370);
+		block9Top = new Rectangle(4690, heigth - 380, 160, 10);
+		block9Left = new Rectangle(4690, heigth - 370, 10, 370);
+		block9Rigth = new Rectangle(4840, heigth - 370, 10, 370);
+		
 		block10 = new Rectangle(5150, heigth - 325, 270, 65);
 		block11 = new Rectangle(5700, heigth - 375, 135, 65);
 		block12 = new Rectangle(6050, heigth - 405, 200, 65);
 		block13 = new Rectangle(6450, heigth - 300, 465, 750);
 
+		Lazer1 = new Rectangle(4690, heigth - 390, 160, 10);
 		grube1 = new Rectangle(1400, heigth - 40, 250, 300);
 		grube2 = new Rectangle(3225, heigth - 40, 300, 300);
 		spike1 = new Rectangle(1990, heigth - 460, 60, 60);
