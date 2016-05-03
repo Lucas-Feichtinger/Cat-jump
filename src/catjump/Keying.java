@@ -31,7 +31,6 @@ public class Keying extends JPanel implements ActionListener {
 	int heigth = 768;
 
 	public Keying() {
-		block = new blocks();
 		c = new Cat();
 		addKeyListener(new AL());
 		setFocusable(true);
@@ -100,6 +99,9 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(img, 5485, 0, null);
 		g2d.drawImage(img, 7485, 0, null);
 
+		if (!dead)
+			g.translate(-c.getKatzePosLinks(), 0);
+
 		// character
 		g2d.drawImage(c.getImage(), c.getKatzePosLinks() + 200, c.getKatzePosHoehe(), null);
 		Rectangle b = c.getCatBoundingBox();
@@ -108,19 +110,23 @@ public class Keying extends JPanel implements ActionListener {
 		
 		g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
 		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
+		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
+
 		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
 		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
 		g.fillRect(block.block5Left.x, block.block5Left.y, block.block5Left.width, block.block5Left.height);
-		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
+		
 		g.fillRect(block.block7Left.x, block.block7Left.y, block.block7Left.width, block.block7Left.height);
 		g.fillRect(block.block7Top.x, block.block7Top.y, block.block7Top.width, block.block7Top.height);
 		g.fillRect(block.block7Rigth.x, block.block7Rigth.y, block.block7Rigth.width, block.block7Rigth.height);
 		g.fillRect(block.block7Bot.x, block.block7Bot.y, block.block7Bot.width, block.block7Bot.height);
+
+		g.fillRect(block.spike1.x, block.spike1.y, block.spike1.width, block.spike1.height);
+		
 		g.fillRect(block.block8Bot.x, block.block8Bot.y, block.block8Bot.width, block.block8Bot.height);
 		g.fillRect(block.block8Rigth.x, block.block8Rigth.y, block.block8Rigth.width, block.block8Rigth.height);
 		g.fillRect(block.block8Left.x, block.block8Left.y, block.block8Left.width, block.block8Left.height);
-		g.fillRect(block.spike1.x,block.spike1.y, block.spike1.width, block.spike1.height);
-
+		
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
 		g2d.drawImage(gras, block.block1.x - 10, block.block1.y - 10, null);
@@ -142,6 +148,11 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
 		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
 
+		if (dead == true) {
+			Font test = new Font("Arial", Font.BOLD, 80);
+			g.setFont(test);
+			g2d.drawString("You died!", 530, 350);
+		}
 	}
 
 	private class AL extends KeyAdapter {
