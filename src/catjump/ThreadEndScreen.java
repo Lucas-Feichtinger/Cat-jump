@@ -5,8 +5,7 @@ import Menu.EscMenu;
 public class ThreadEndScreen implements Runnable {
 	private long deathTime = 500;
 
-	Cat c;
-	Keying k;
+	private Keying k;
 
 	public ThreadEndScreen(Keying k) {
 		this.k = k;

@@ -60,7 +60,6 @@ public class Blocks {
 
 		// Oberseite der Blöcke
 		blocksTop.add(block2Top = new Rectangle(1650, heigth - 400, 400, 10));
-		blocksBot.add(block2Bot = new Rectangle(1650, heigth - 300, 400, 10));
 		blocksTop.add(block3Top = new Rectangle(2180, heigth - 500, 300, 10));
 		blocksTop.add(block1Top = new Rectangle(1000, heigth - 250, 400, 10));
 		blocksTop.add(block7Top = new Rectangle(4265, heigth - 290, 310, 10));
@@ -77,7 +76,9 @@ public class Blocks {
 		blocksBot.add(block8Bot = new Rectangle(4690, heigth - 620, 160, 10));
 		blocksBot.add(boden1 = new Rectangle(0, heigth - 80, 1400, 50));
 		blocksBot.add(boden2 = new Rectangle(1650, heigth - 80, 1600, 50));
-		blocksBot.add(boden3 = new Rectangle(3825, heigth - 80, 7000, 50));
+		blocksBot.add(boden3 = new Rectangle(3825, heigth - 80, 7000, 50));		
+		blocksBot.add(block2Bot = new Rectangle(1650, heigth - 300, 400, 10));
+
 
 		// Blöcke
 		blocks.add(block1 = new Rectangle(1010, heigth - 240, 380, 300));

@@ -87,8 +87,10 @@ public class Keying extends JPanel implements ActionListener {
 			}
 			repaint();
 		}
-		else if(dead = true && escape == false){
-			new Thread(new ThreadEndScreen(this)).start();
+		else if(dead == true && escape == false){
+			System.out.println(escape);
+			new Thread(new ThreadEndScreen(this)).start();			
+			System.out.println(escape);
 		}
 		
 	}
@@ -129,6 +131,8 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block9Left.x, block.block9Left.y, block.block9Left.width, block.block9Left.height);
 		g.fillRect(block.block9Top.x, block.block9Top.y, block.block9Top.width, block.block9Top.height);
 		g.fillRect(block.block9Rigth.x, block.block9Rigth.y, block.block9Rigth.width, block.block9Rigth.height);
+		
+		g2d.setColor(Color.BLUE);
 		g.fillRect(block.spike1.x,block.spike1.y, block.spike1.width, block.spike1.height);
 		g.fillRect(block.Lazer1.x,block.Lazer1.y, block.Lazer1.width, block.Lazer1.height);
 
@@ -261,7 +265,7 @@ public class Keying extends JPanel implements ActionListener {
 		return escape;
 	}
 
-	public static void setEscape(boolean escape) {
+	public void setEscape(boolean escape) {
 		Keying.escape = escape;
 	}
 }

@@ -75,6 +75,7 @@ public class Cat {
 					space = true;
 					inAir = true;
 					new Thread(new ThreadCat(this)).start();
+					System.out.println(jumping);
 				}
 				if (key == KeyEvent.VK_ESCAPE) {
 					EscMenu.main(null);
