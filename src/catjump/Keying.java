@@ -1,13 +1,17 @@
 package catjump;
 
 import javax.swing.*;
+
+import Menu.EscMenu;
+
 import java.awt.*;
 import java.awt.event.*;
 
 public class Keying extends JPanel implements ActionListener {
 
 	// TODO Lucas: Jumping; Florian: Kollision
-
+	public int deadTime;
+	private EscMenu esc;
 	Cat c;
 	Blocks block;
 	public Image img;
@@ -54,11 +58,14 @@ public class Keying extends JPanel implements ActionListener {
 		img = i.getImage();
 		time = new Timer(5, this);
 		time.start();
+		deadTime = 0;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		collision();
-
+		
+		ShowEscMenu();
+		
 		if (dead != true) {
 			if (collisionRigth == false) {
 				c.move();
@@ -86,13 +93,34 @@ public class Keying extends JPanel implements ActionListener {
 				falling = false;
 			}
 			repaint();
-		}
-		else if(dead == true && escape == false){
-			System.out.println(escape);
-			new Thread(new ThreadEndScreen(this)).start();			
-			System.out.println(escape);
-		}
+		}		
+	}
+	
+	
+	public void reset(){
+		c.setKatzePos(200);
+		c.setKatzePosHoehe(580);
+		c.setCatBoundingBox();
+	}
+
+	private void ShowEscMenu() {
 		
+		if(dead) {
+			if(deadTime <= 100){
+				deadTime += 1;
+				System.out.println(deadTime);
+			}
+			else{
+				if(esc == null){
+					esc = new EscMenu("Menü");
+					esc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					esc.setSize(300, 320);
+					esc.setLocationRelativeTo(null);
+					esc.setLayout(null);
+					esc.setVisible(true);
+				}
+			}
+		}
 	}
 
 	public void paint(Graphics g) {

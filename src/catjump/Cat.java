@@ -4,12 +4,13 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 import Menu.EscMenu;
 
 public class Cat {
 	Keying k;
-	EscMenu esc = new EscMenu(null);
+	EscMenu esc;
 	int KatzenPos, movement, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
@@ -20,7 +21,11 @@ public class Cat {
 	public Cat() {
 		catImg = i.getImage();
 		KatzenPos = 200;
-
+		esc = new EscMenu("Menü");
+		esc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		esc.setSize(300, 320);
+		esc.setLocationRelativeTo(null);
+		esc.setLayout(null);
 		KatzePosHoehe = 580;
 	}
 
@@ -54,20 +59,19 @@ public class Cat {
 		}
 		if (key == KeyEvent.VK_A) {
 
-
 			movement = -1;
 
 		}
 
 		if (key == KeyEvent.VK_ESCAPE) {
-			EscMenu.main(null);
+			esc.setVisible(true);
 		}
 
 		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
 
 			if (key == KeyEvent.VK_SPACE && space == false) {
 				jumping = true;
-				
+
 				KatzenbewegungHoehe = -5;
 
 				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
@@ -78,7 +82,7 @@ public class Cat {
 					System.out.println(jumping);
 				}
 				if (key == KeyEvent.VK_ESCAPE) {
-					EscMenu.main(null);
+					esc.setVisible(true);
 				}
 			}
 		}
@@ -98,6 +102,10 @@ public class Cat {
 			space = false;
 			KatzenbewegungHoehe = 0;
 		}
+		
+		if(key == KeyEvent.VK_ESCAPE) {
+			esc.setVisible(false);
+		}
 	}
 
 	public int getKatzePos() {
@@ -114,10 +122,6 @@ public class Cat {
 
 	public void setKatzePosHoehe(int katzePosHoehe) {
 		KatzePosHoehe = katzePosHoehe;
-	}
-
-	public Rectangle getCatBoundingBox() {
-		return new Rectangle(getKatzePos() + 200, getKatzePosHoehe(), 150, 80);
 	}
 
 	public boolean isJumping() {
@@ -142,5 +146,13 @@ public class Cat {
 
 	public void setKatzenbewegungHoehe(int katzenbewegungHoehe) {
 		KatzenbewegungHoehe = katzenbewegungHoehe;
+	}
+	
+	public void setCatBoundingBox(){
+		new Rectangle(getKatzePos() + 200, getKatzePosHoehe(), 150, 80);
+	}
+	
+	public Rectangle getCatBoundingBox() {
+		return new Rectangle(getKatzePos() + 200, getKatzePosHoehe(), 150, 80);
 	}
 }

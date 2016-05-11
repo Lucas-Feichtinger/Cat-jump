@@ -10,18 +10,10 @@ public class EscMenu extends JFrame implements ActionListener {
 	private JButton restart;
 	private JButton einstellung;
 	private JButton ende;
+	public Keying k;
 
 	int xSize = 1600;
 	int ySize = 768;
-
-	public static void main(String[] args) {
-		EscMenu frame = new EscMenu("Menü");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 320);
-		frame.setLocationRelativeTo(null);
-		frame.setLayout(null);
-		frame.setVisible(true);
-	}
 
 	public EscMenu(String title) {
 		super(title);
@@ -46,13 +38,7 @@ public class EscMenu extends JFrame implements ActionListener {
 
 		if (e.getSource() == restart) {
 			this.dispose();
-			JFrame f = new JFrame();
-			f.add(new Keying());
-			f.setSize(xSize, ySize);
-			f.setVisible(true);
-			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			f.setTitle("Cat Jump");
-			f.setLocationRelativeTo(null);
+			k.reset();
 		}
 
 		if (e.getSource() == einstellung) {
