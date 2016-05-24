@@ -16,7 +16,6 @@ public class Cat {
 	ImageIcon i = new ImageIcon("Katze.png");
 	public boolean jumping = false;
 	public boolean space = false;
-	public boolean inAir = false;
 
 	public Cat() {
 		catImg = i.getImage();
@@ -67,24 +66,14 @@ public class Cat {
 			esc.setVisible(true);
 		}
 
-		if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
-
-			if (key == KeyEvent.VK_SPACE && space == false) {
-				jumping = true;
-
-				KatzenbewegungHoehe = -5;
-
-				if (key == KeyEvent.VK_SPACE && space == false && inAir == false) {
-					jumping = true;
-					space = true;
-					inAir = true;
-					new Thread(new ThreadCat(this)).start();
-					System.out.println(jumping);
-				}
-				if (key == KeyEvent.VK_ESCAPE) {
-					esc.setVisible(true);
-				}
-			}
+		if (key == KeyEvent.VK_SPACE && jumping == false && k.isFalling() == false) {
+			KatzenbewegungHoehe = -5;
+			jumping = true;
+			space = true;
+			new Thread(new ThreadCat(this)).start();
+		}
+		if (key == KeyEvent.VK_ESCAPE) {
+			esc.setVisible(true);
 		}
 	}
 
@@ -102,8 +91,8 @@ public class Cat {
 			space = false;
 			KatzenbewegungHoehe = 0;
 		}
-		
-		if(key == KeyEvent.VK_ESCAPE) {
+
+		if (key == KeyEvent.VK_ESCAPE) {
 			esc.setVisible(false);
 		}
 	}
@@ -132,14 +121,6 @@ public class Cat {
 		this.jumping = jumping;
 	}
 
-	public boolean isInAir() {
-		return inAir;
-	}
-
-	public void setInAir(boolean inAir) {
-		this.inAir = inAir;
-	}
-
 	public int getKatzenbewegungHoehe() {
 		return KatzenbewegungHoehe;
 	}
@@ -147,11 +128,11 @@ public class Cat {
 	public void setKatzenbewegungHoehe(int katzenbewegungHoehe) {
 		KatzenbewegungHoehe = katzenbewegungHoehe;
 	}
-	
-	public void setCatBoundingBox(){
+
+	public void setCatBoundingBox() {
 		new Rectangle(getKatzePos() + 200, getKatzePosHoehe(), 150, 80);
 	}
-	
+
 	public Rectangle getCatBoundingBox() {
 		return new Rectangle(getKatzePos() + 200, getKatzePosHoehe(), 150, 80);
 	}
