@@ -26,7 +26,7 @@ public class Keying extends JPanel implements ActionListener {
 	Thread animator; // für animationen
 
 	public boolean collisionBot = false;
-	public boolean falling = false;
+	private static boolean falling = false;
 	public boolean collisionRigth = false;
 	public boolean collisionLeft = false;
 	public boolean dead = false;
@@ -80,7 +80,7 @@ public class Keying extends JPanel implements ActionListener {
 			}
 
 			collision();
-			if (falling == false && !c.jumping) {
+			if (falling == true && !c.jumping) {
 				c.KatzePosHoehe += 7;
 			} else {
 				c.jump();
@@ -90,25 +90,31 @@ public class Keying extends JPanel implements ActionListener {
 				c.move();
 			} else if (collisionBot == true) {
 				c.setKatzenbewegungHoehe(0);
-				falling = false;
+				falling = true;
 			}
 			repaint();
 		}		
 	}
 	
 	
-	public void reset(){
-		c.setKatzePos(200);
-		c.setKatzePosHoehe(580);
-		c.setCatBoundingBox();
-	}
+	/*public void reset(){
+		*collisionBot = false;
+		*falling = false;
+		*collisionRigth = false;
+		*collisionLeft = false;
+		*dead = false;
+		*escape = false;
+		*c.jumping = false;
+		*c.space = false;
+		*c.setKatzePos(200);
+		*c.setKatzePosHoehe(580);
+		*c.setCatBoundingBox();
+	}*/
 
 	private void ShowEscMenu() {
-		
 		if(dead) {
 			if(deadTime <= 100){
 				deadTime += 1;
-				System.out.println(deadTime);
 			}
 			else{
 				if(esc == null){
@@ -143,7 +149,7 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
 		
-		g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
+		//g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
 		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
 		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
 		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
@@ -157,7 +163,6 @@ public class Keying extends JPanel implements ActionListener {
 		g.fillRect(block.block8Rigth.x, block.block8Rigth.y, block.block8Rigth.width, block.block8Rigth.height);
 		g.fillRect(block.block8Left.x, block.block8Left.y, block.block8Left.width, block.block8Left.height);
 		g.fillRect(block.block9Left.x, block.block9Left.y, block.block9Left.width, block.block9Left.height);
-		g.fillRect(block.block9Top.x, block.block9Top.y, block.block9Top.width, block.block9Top.height);
 		g.fillRect(block.block9Rigth.x, block.block9Rigth.y, block.block9Rigth.width, block.block9Rigth.height);
 		
 		g2d.setColor(Color.BLUE);
@@ -172,8 +177,9 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(gras1, block.block3.x - 10, block.block3.y - 10, null);
 		g2d.drawImage(bot1, block.boden1.x, block.boden1.y, null);
 		g2d.drawImage(bot2, block.boden2.x, block.boden2.y, null);
-		g2d.drawImage(gras3, block.block4.x - 10, block.block4.y - 10, null);
+		g2d.drawImage(gras2, block.block4.x - 10, block.block4.y - 10, null);
 		g2d.drawImage(gras4, block.WallLeft.x - 390, block.WallLeft.y + 130, null);
+		g2d.drawImage(gras2, block.block10.x - 10, block.block10.y - 10, null);
 		g.fillRect(block.boden3.x, block.boden3.y, block.boden3.width, block.boden3.height);
 		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
 		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
@@ -199,88 +205,47 @@ public class Keying extends JPanel implements ActionListener {
 		}
 	}
 
-	public void collision() {
-		Rectangle bot1 = block.boden1;
-		Rectangle bot2 = block.boden2;
-		Rectangle bot3 = block.boden3;
-		Rectangle pit1 = block.grube1;
-		Rectangle pit2 = block.grube2;
-		Rectangle wall1 = block.WallLeft;
-		Rectangle rect1Left = block.block1Left;
-		Rectangle rect1Top = block.block1Top;
-		Rectangle rect1Right = block.block1Right;
-		Rectangle rect2Left = block.block2;
-		Rectangle rect2Top = block.block2Top;
-		Rectangle rect2Right = block.block2Right;
-		Rectangle rect2Bot = block.block2Bot;
-		Rectangle rect3Left = block.block3Left;
-		Rectangle rect3Top = block.block3Top;
-		Rectangle rect3Right = block.block3Right;
-		Rectangle rect3Bot = block.block3Bot;
-		Rectangle rect4Left = block.block4Left;
-		Rectangle rect4Top = block.block4Top;
-		Rectangle rect4Right = block.block4Right;
-		Rectangle rect4Bot = block.block4Bot;
-		Rectangle rect5Left = block.block5Left;
-		Rectangle rect5Right = block.block5Right;
-		Rectangle rect5Bot = block.block5Bot;
-		Rectangle rect6Left = block.block6Left;
-		Rectangle rect6Top = block.block6Top;
-		Rectangle rect6Right = block.block6Right;
-		Rectangle rect7Left = block.block7Left;
-		Rectangle rect7Top = block.block7Top;
-		Rectangle rect7Right = block.block7Rigth;
-		Rectangle rect7Bot = block.block7Bot;
-		Rectangle rect8Left = block.block8Left;
-		Rectangle rect8Right = block.block8Rigth;
-		Rectangle rect8Bot = block.block8Bot;
-		Rectangle rect9Left = block.block9Left;
-		Rectangle rect9Right = block.block9Rigth;
-		Rectangle rect9Top = block.block9Top;
-		Rectangle spikeRect1 = block.spike1;
-		Rectangle lazerRect1 = block.Lazer1;
-		
+	public void collision() {		
 		Rectangle cat = c.getCatBoundingBox();
 
-		if (rect1Left.intersects(cat) || rect2Left.intersects(cat) || rect3Left.intersects(cat)
-				|| rect4Left.intersects(cat) || rect5Left.intersects(cat) || rect6Left.intersects(cat)
-				|| rect7Left.intersects(cat) || rect8Left.intersects(cat) || rect9Left.intersects(cat)) {
-			collisionLeft = true;
-		} else {
-			collisionLeft = false;
+		collisionLeft = false;
+		for(Rectangle b : Blocks.getBlocksLeft()) {
+			if(b.intersects(cat)) {
+				collisionLeft = true;
+				break;
+			}
+		}
+		
+		collisionRigth = false;
+		for(Rectangle b : Blocks.getBlocksRight()) {
+			if(b.intersects(cat)) {
+				collisionRigth = true;
+				break;
+			}
+		}
+		
+		falling = true;
+		for(Rectangle b : Blocks.getBlocksTop()) {
+			if(b.intersects(cat)) {
+				falling = false;
+				break;
+			}
 		}
 
-		if (wall1.intersects(cat) || rect1Right.intersects(cat) || rect2Right.intersects(cat)
-				|| rect3Right.intersects(cat) || rect4Right.intersects(cat) || rect5Right.intersects(cat) 
-				|| rect7Right.intersects(cat) || rect6Right.intersects(cat) || rect8Right.intersects(cat)
-				|| rect9Right.intersects(cat)) {
-
-			collisionRigth = true;
-		} else {
-			collisionRigth = false;
+		collisionBot = false;
+		for(Rectangle b : Blocks.getBlocksBot()) {
+			if(b.intersects(cat)) {
+				collisionBot = true;
+				break;
+			}
 		}
-
-		if (bot1.intersects(cat) || bot2.intersects(cat) || bot3.intersects(cat) || rect1Top.intersects(cat)
-				|| rect2Top.intersects(cat) || rect3Top.intersects(cat) || rect4Top.intersects(cat)
-				|| rect6Top.intersects(cat) || rect7Top.intersects(cat) || rect9Top.intersects(cat)) {
-			falling = true;
-			c.setInAir(false);
-		} else {
-			falling = false;
-		}
-
-		if (rect5Bot.intersects(cat) || rect2Bot.intersects(cat) || rect3Bot.intersects(cat)
-				|| rect4Bot.intersects(cat) || rect7Bot.intersects(cat) || rect8Bot.intersects(cat)) {
-			collisionBot = true;
-		} else {
-			collisionBot = false;
-		}
-
-		if (spikeRect1.intersects(cat) || pit1.intersects(cat) || pit2.intersects(cat)
-			|| lazerRect1.intersects(cat)) {
-			dead = true;
-		} else {
-			dead = false;
+		
+		dead = false;
+		for(Rectangle b : Blocks.getFallen()) {
+			if(b.intersects(cat)) {
+				dead = true;
+				break;
+			}
 		}
 	}
 
@@ -295,5 +260,13 @@ public class Keying extends JPanel implements ActionListener {
 
 	public void setEscape(boolean escape) {
 		Keying.escape = escape;
+	}
+
+	public static boolean isFalling() {
+		return falling;
+	}
+
+	public void setFalling(boolean falling) {
+		this.falling = falling;
 	}
 }
