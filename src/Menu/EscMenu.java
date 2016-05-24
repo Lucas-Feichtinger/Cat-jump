@@ -17,7 +17,9 @@ public class EscMenu extends JFrame implements ActionListener {
 
 	public EscMenu(String title) {
 		super(title);
-
+		
+		JLabel jlabel = new JLabel("You Died!");
+		
 		restart = new JButton("Spiel restarten");
 		restart.setBounds(60, 40, 160, 40);
 		restart.addActionListener(this);
@@ -38,7 +40,7 @@ public class EscMenu extends JFrame implements ActionListener {
 
 		if (e.getSource() == restart) {
 			this.dispose();
-			k.reset();
+			//k.reset();
 		}
 
 		if (e.getSource() == einstellung) {

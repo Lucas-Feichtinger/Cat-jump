@@ -159,25 +159,6 @@ public class Keying extends JPanel implements ActionListener {
 		}
 		
 		// TODO: image zu block dazuspeichern, damit wir wissen was wir anzeigen muessen
-//		g2d.drawImage(gras1, block.block3.x - 10, block.block3.y - 10, null);
-//		g2d.drawImage(bot1, block.boden1.x, block.boden1.y, null);
-//		g2d.drawImage(bot2, block.boden2.x, block.boden2.y, null);
-//		g2d.drawImage(gras2, block.block4.x - 10, block.block4.y - 10, null);
-//		g2d.drawImage(gras2, block.block1.x - 10, block.block1.y - 10, null);
-//		g2d.drawImage(gras4, block.WallLeft.x - 390, block.WallLeft.y + 130, null);
-//		g2d.drawImage(gras2, block.block10.x - 10, block.block10.y - 10, null);
-//		g.fillRect(block.boden3.x, block.boden3.y, block.boden3.width, block.boden3.height);
-//		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
-//		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
-//		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
-//		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
-//		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
-//		g.fillRect(block.block10.x, block.block10.y, block.block10.width, block.block10.height);
-//		g.fillRect(block.block11.x, block.block11.y, block.block11.width, block.block11.height);
-//		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
-//		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
-//		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
-
 	}
 
 	private class AL extends KeyAdapter {
