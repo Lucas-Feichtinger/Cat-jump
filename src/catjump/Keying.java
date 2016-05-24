@@ -6,7 +6,11 @@ import Menu.EscMenu;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Rectangle2D;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Keying extends JPanel implements ActionListener {
 
@@ -28,11 +32,11 @@ public class Keying extends JPanel implements ActionListener {
 
 	public boolean collisionBot = false;
 	private static boolean falling = false;
-	public boolean collisionRigth = false;
+	public boolean collisionRight = false;
 	public boolean collisionLeft = false;
 	public boolean dead = false;
 	public static boolean escape = false;
-	
+
 	int width = 1600;
 	int heigth = 768;
 
@@ -64,11 +68,11 @@ public class Keying extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		collision();
-		
+
 		ShowEscMenu();
-		
+
 		if (dead != true) {
-			if (collisionRigth == false) {
+			if (collisionRight == false) {
 				c.move();
 			} else {
 				c.setKatzePos(c.getKatzePos() + 4);
@@ -94,31 +98,22 @@ public class Keying extends JPanel implements ActionListener {
 				falling = true;
 			}
 			repaint();
-		}		
+		}
 	}
-	
-	
-	/*public void reset(){
-		*collisionBot = false;
-		*falling = false;
-		*collisionRigth = false;
-		*collisionLeft = false;
-		*dead = false;
-		*escape = false;
-		*c.jumping = false;
-		*c.space = false;
-		*c.setKatzePos(200);
-		*c.setKatzePosHoehe(580);
-		*c.setCatBoundingBox();
-	}*/
+
+	/*
+	 * public void reset(){ collisionBot = false; falling = false;
+	 * collisionRigth = false; collisionLeft = false; dead = false; escape =
+	 * false; c.jumping = false; c.space = false; c.setKatzePos(200);
+	 * c.setKatzePosHoehe(580); c.setCatBoundingBox(); }
+	 */
 
 	private void ShowEscMenu() {
-		if(dead) {
-			if(deadTime <= 100){
+		if (dead) {
+			if (deadTime <= 100) {
 				deadTime += 1;
-			}
-			else{
-				if(esc == null){
+			} else {
+				if (esc == null) {
 					esc = new EscMenu("Menü");
 					esc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					esc.setSize(300, 320);
@@ -143,56 +138,45 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawImage(img, 7485, 0, null);
 
 		g.translate(-c.getKatzePos(), 0);
-		
+
 		// character
 		g2d.drawImage(c.getImage(), c.getKatzePos() + 200, c.getKatzePosHoehe(), null);
 		Rectangle b = c.getCatBoundingBox();
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
-		
-		//g.fillRect(block.block6Top.x, block.block6Top.y, block.block6Top.width, block.block6Top.height);
-		g.fillRect(block.block6Right.x, block.block6Right.y, block.block6Right.width, block.block6Right.height);
-		g.fillRect(block.block5Right.x, block.block5Right.y, block.block5Right.width, block.block5Right.height);
-		g.fillRect(block.block5Bot.x, block.block5Bot.y, block.block5Bot.width, block.block5Bot.height);
-		g.fillRect(block.block5Left.x, block.block5Left.y, block.block5Left.width, block.block5Left.height);
-		g.fillRect(block.block6Left.x, block.block6Left.y, block.block6Left.width, block.block6Left.height);
-		g.fillRect(block.block7Left.x, block.block7Left.y, block.block7Left.width, block.block7Left.height);
-		g.fillRect(block.block7Top.x, block.block7Top.y, block.block7Top.width, block.block7Top.height);
-		g.fillRect(block.block7Rigth.x, block.block7Rigth.y, block.block7Rigth.width, block.block7Rigth.height);
-		g.fillRect(block.block7Bot.x, block.block7Bot.y, block.block7Bot.width, block.block7Bot.height);
-		g.fillRect(block.block8Bot.x, block.block8Bot.y, block.block8Bot.width, block.block8Bot.height);
-		g.fillRect(block.block8Rigth.x, block.block8Rigth.y, block.block8Rigth.width, block.block8Rigth.height);
-		g.fillRect(block.block8Left.x, block.block8Left.y, block.block8Left.width, block.block8Left.height);
-		g.fillRect(block.block9Left.x, block.block9Left.y, block.block9Left.width, block.block9Left.height);
-		g.fillRect(block.block9Rigth.x, block.block9Rigth.y, block.block9Rigth.width, block.block9Rigth.height);
-		
+
 		g2d.setColor(Color.BLUE);
-		g.fillRect(block.spike1.x,block.spike1.y, block.spike1.width, block.spike1.height);
-		g.fillRect(block.Lazer1.x,block.Lazer1.y, block.Lazer1.width, block.Lazer1.height);
-
-
+		
+		for(Rectangle falle : Blocks.getFallen()) {
+			g2d.fillRect(falle.x, falle.y, falle.width, falle.height);
+		}
+		
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
-		g2d.drawImage(gras, block.block1.x - 10, block.block1.y - 10, null);
-		g2d.drawImage(gras2, block.block2.x - 10, block.block2.y - 10, null);
-		g2d.drawImage(gras1, block.block3.x - 10, block.block3.y - 10, null);
-		g2d.drawImage(bot1, block.boden1.x, block.boden1.y, null);
-		g2d.drawImage(bot2, block.boden2.x, block.boden2.y, null);
-		g2d.drawImage(gras2, block.block4.x - 10, block.block4.y - 10, null);
-		g2d.drawImage(gras4, block.WallLeft.x - 390, block.WallLeft.y + 130, null);
-		g2d.drawImage(gras2, block.block10.x - 10, block.block10.y - 10, null);
-		g.fillRect(block.boden3.x, block.boden3.y, block.boden3.width, block.boden3.height);
-		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
-		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
-		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
-		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
-		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
-		g.fillRect(block.block10.x, block.block10.y, block.block10.width, block.block10.height);
-		g.fillRect(block.block11.x, block.block11.y, block.block11.width, block.block11.height);
-		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
-		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
-		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
 
+		for(Rectangle block : Blocks.getBlocks()) {
+			g2d.drawImage(gras1, block.x, block.y, block.width, block.height, null);
+		}
+		
+		// TODO: image zu block dazuspeichern, damit wir wissen was wir anzeigen muessen
+//		g2d.drawImage(gras1, block.block3.x - 10, block.block3.y - 10, null);
+//		g2d.drawImage(bot1, block.boden1.x, block.boden1.y, null);
+//		g2d.drawImage(bot2, block.boden2.x, block.boden2.y, null);
+//		g2d.drawImage(gras2, block.block4.x - 10, block.block4.y - 10, null);
+//		g2d.drawImage(gras2, block.block1.x - 10, block.block1.y - 10, null);
+//		g2d.drawImage(gras4, block.WallLeft.x - 390, block.WallLeft.y + 130, null);
+//		g2d.drawImage(gras2, block.block10.x - 10, block.block10.y - 10, null);
+//		g.fillRect(block.boden3.x, block.boden3.y, block.boden3.width, block.boden3.height);
+//		g.fillRect(block.block5.x, block.block5.y, block.block5.width, block.block5.height);
+//		g.fillRect(block.block6.x, block.block6.y, block.block6.width, block.block6.height);
+//		g.fillRect(block.block7.x, block.block7.y, block.block7.width, block.block7.height);
+//		g.fillRect(block.block8.x, block.block8.y, block.block8.width, block.block8.height);
+//		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
+//		g.fillRect(block.block10.x, block.block10.y, block.block10.width, block.block10.height);
+//		g.fillRect(block.block11.x, block.block11.y, block.block11.width, block.block11.height);
+//		g.fillRect(block.block12.x, block.block12.y, block.block12.width, block.block12.height);
+//		g.fillRect(block.block13.x, block.block13.y, block.block13.width, block.block13.height);
+//		g.fillRect(block.block9.x, block.block9.y, block.block9.width, block.block9.height);
 
 	}
 
@@ -209,30 +193,82 @@ public class Keying extends JPanel implements ActionListener {
 	public void collision() {
 		Rectangle cat = c.getCatBoundingBox();
 
-		collisionLeft = testForCollision(cat, Blocks.getBlocksLeft());
+		collisionLeft = false;
+		collisionRight = false;
+		falling = true;
+		collisionBot = false;
+		for (Rectangle block : Blocks.getBlocks()) {
 
-		collisionRigth = testForCollision(cat, Blocks.getBlocksRight());
+			CollisionDirection collision = testCollision(cat, block);
+			
+			if(collision == null) {
+				continue;
+			}
+			
+			switch (collision) {				
+			case LEFT:
+				collisionLeft = true;
+				break;
+			case RIGHT:
+				collisionRight = true;
+				break;
+			case TOP:
+				falling = false;
+				break;
+			case BOT:
+				collisionBot = true;
+				break;
+			}
 
-		falling = !testForCollision(cat, Blocks.getBlocksTop());
-
-		collisionBot = testForCollision(cat, Blocks.getBlocksBot());
-
-		dead = testForCollision(cat, Blocks.getFallen());
-	}
-
-	private boolean testForCollision(Rectangle cat, Collection<Rectangle> collisionBoxes) {
-		for(Rectangle b : collisionBoxes) {
-			if(b.intersects(cat)) {
-				return true;
+		}
+		
+		dead = false;
+		for (Rectangle falle : Blocks.getFallen()) {
+			if(testCollision(cat, falle) != null) {
+				dead = true;
+				break;
 			}
 		}
-		return false;
+	}
+
+	enum CollisionDirection {
+		LEFT, RIGHT, TOP, BOT
+	}
+
+	private CollisionDirection testCollision(Rectangle cat, Rectangle block) {
+
+		Rectangle2D intersection = cat.createIntersection(block);
+
+		if (intersection.isEmpty()) {
+			return null;
+		}
+
+		CollisionDirection direction = null;
+
+		if (intersection.getY() == block.getY()) {
+			direction = CollisionDirection.TOP;
+		}
+
+		if (intersection.getMaxY() == block.getMaxY()) {
+			direction = CollisionDirection.BOT;
+		}
+
+		if (direction == null || intersection.getHeight() > intersection.getWidth()) {
+			if (intersection.getX() == block.getX()) {
+				direction = CollisionDirection.LEFT;
+			}
+
+			if (intersection.getMaxX() == block.getMaxX()) {
+				direction = CollisionDirection.RIGHT;
+			}
+		}
+
+		return direction;
 	}
 
 	public Cat getC() {
 		return c;
 	}
-	
 
 	public static boolean isEscape() {
 		return escape;
