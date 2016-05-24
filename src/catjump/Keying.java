@@ -6,6 +6,7 @@ import Menu.EscMenu;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Collection;
 
 public class Keying extends JPanel implements ActionListener {
 
@@ -205,48 +206,27 @@ public class Keying extends JPanel implements ActionListener {
 		}
 	}
 
-	public void collision() {		
+	public void collision() {
 		Rectangle cat = c.getCatBoundingBox();
 
-		collisionLeft = false;
-		for(Rectangle b : Blocks.getBlocksLeft()) {
-			if(b.intersects(cat)) {
-				collisionLeft = true;
-				break;
-			}
-		}
-		
-		collisionRigth = false;
-		for(Rectangle b : Blocks.getBlocksRight()) {
-			if(b.intersects(cat)) {
-				collisionRigth = true;
-				break;
-			}
-		}
-		
-		falling = true;
-		for(Rectangle b : Blocks.getBlocksTop()) {
-			if(b.intersects(cat)) {
-				falling = false;
-				break;
-			}
-		}
+		collisionLeft = testForCollision(cat, Blocks.getBlocksLeft());
 
-		collisionBot = false;
-		for(Rectangle b : Blocks.getBlocksBot()) {
+		collisionRigth = testForCollision(cat, Blocks.getBlocksRight());
+
+		falling = !testForCollision(cat, Blocks.getBlocksTop());
+
+		collisionBot = testForCollision(cat, Blocks.getBlocksBot());
+
+		dead = testForCollision(cat, Blocks.getFallen());
+	}
+
+	private boolean testForCollision(Rectangle cat, Collection<Rectangle> collisionBoxes) {
+		for(Rectangle b : collisionBoxes) {
 			if(b.intersects(cat)) {
-				collisionBot = true;
-				break;
+				return true;
 			}
 		}
-		
-		dead = false;
-		for(Rectangle b : Blocks.getFallen()) {
-			if(b.intersects(cat)) {
-				dead = true;
-				break;
-			}
-		}
+		return false;
 	}
 
 	public Cat getC() {
