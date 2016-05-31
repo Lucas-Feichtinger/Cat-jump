@@ -21,12 +21,6 @@ public class Keying extends JPanel implements ActionListener {
 	Blocks block;
 	public Image img;
 	public Image gras;
-	public Image gras1;
-	public Image gras2;
-	public Image gras3;
-	public Image gras4;
-	public Image bot1;
-	public Image bot2;
 	Timer time; // für Repaint
 	Thread animator; // für animationen
 
@@ -47,19 +41,7 @@ public class Keying extends JPanel implements ActionListener {
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("bg.png");
 		ImageIcon grass = new ImageIcon("grass.png");
-		ImageIcon grass1 = new ImageIcon("grass1.png");
-		ImageIcon grass2 = new ImageIcon("grass2.png");
-		ImageIcon grass3 = new ImageIcon("grass3.png");
-		ImageIcon grass4 = new ImageIcon("grass4.png");
-		ImageIcon boden1 = new ImageIcon("bot1.png");
-		ImageIcon boden2 = new ImageIcon("bot2.png");
 		gras = grass.getImage();
-		bot1 = boden1.getImage();
-		bot2 = boden2.getImage();
-		gras1 = grass1.getImage();
-		gras2 = grass2.getImage();
-		gras3 = grass3.getImage();
-		gras4 = grass4.getImage();
 		img = i.getImage();
 		time = new Timer(5, this);
 		time.start();
@@ -154,8 +136,8 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
 
-		for(Rectangle block : Blocks.getBlocks()) {
-			g2d.drawImage(gras1, block.x, block.y, block.width, block.height, null);
+		for(Block block : Blocks.getBlocks()) {
+			g2d.drawImage(block.getTexture(), block.x, block.y, block.width, block.height, null);
 		}
 		
 		// TODO: image zu block dazuspeichern, damit wir wissen was wir anzeigen muessen
@@ -178,7 +160,7 @@ public class Keying extends JPanel implements ActionListener {
 		collisionRight = false;
 		falling = true;
 		collisionBot = false;
-		for (Rectangle block : Blocks.getBlocks()) {
+		for (Block block : Blocks.getBlocks()) {
 
 			CollisionDirection collision = testCollision(cat, block);
 			
@@ -216,9 +198,9 @@ public class Keying extends JPanel implements ActionListener {
 		LEFT, RIGHT, TOP, BOT
 	}
 
-	private CollisionDirection testCollision(Rectangle cat, Rectangle block) {
+	private CollisionDirection testCollision(Rectangle cat, Rectangle falle) {
 
-		Rectangle2D intersection = cat.createIntersection(block);
+		Rectangle2D intersection = cat.createIntersection(falle);
 
 		if (intersection.isEmpty()) {
 			return null;
@@ -226,20 +208,20 @@ public class Keying extends JPanel implements ActionListener {
 
 		CollisionDirection direction = null;
 
-		if (intersection.getY() == block.getY()) {
+		if (intersection.getY() == falle.getY()) {
 			direction = CollisionDirection.TOP;
 		}
 
-		if (intersection.getMaxY() == block.getMaxY()) {
+		if (intersection.getMaxY() == falle.getMaxY()) {
 			direction = CollisionDirection.BOT;
 		}
 
 		if (direction == null || intersection.getHeight() > intersection.getWidth()) {
-			if (intersection.getX() == block.getX()) {
+			if (intersection.getX() == falle.getX()) {
 				direction = CollisionDirection.LEFT;
 			}
 
-			if (intersection.getMaxX() == block.getMaxX()) {
+			if (intersection.getMaxX() == falle.getMaxX()) {
 				direction = CollisionDirection.RIGHT;
 			}
 		}
