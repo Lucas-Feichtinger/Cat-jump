@@ -79,7 +79,7 @@ public class Main extends JFrame implements ActionListener {
 		if (e.getSource() == info) {
 			Object[] options = { "OK" };
 
-			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger und Florian Czakoi !", "Information",
+			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger, Florian Czakoi hat rumgepfuscht!", "Information",
 					JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 		}
 

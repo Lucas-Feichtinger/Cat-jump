@@ -1,6 +1,8 @@
 package Menu;
 
 import javax.swing.*;
+
+import catjump.Cat;
 import catjump.Keying;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +13,7 @@ public class EscMenu extends JFrame implements ActionListener {
 	private JButton einstellung;
 	private JButton ende;
 	public Keying k;
+	public Cat c;
 
 	int xSize = 1600;
 	int ySize = 768;
@@ -40,7 +43,8 @@ public class EscMenu extends JFrame implements ActionListener {
 
 		if (e.getSource() == restart) {
 			this.dispose();
-			//k.reset();
+			k.reset();
+			c.reset();
 		}
 
 		if (e.getSource() == einstellung) {
