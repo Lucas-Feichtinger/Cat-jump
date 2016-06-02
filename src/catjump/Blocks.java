@@ -62,7 +62,7 @@ public class Blocks {
 		Fallen.add(new Rectangle(3225, heigth - 40, 300, 300)); // grube
 		Fallen.add(new Rectangle(1980, heigth - 450, 60, 60)); // spike
 	
-
+	}
 	public static List<Block> getBlocks() {
 		return blocks;
 	}
