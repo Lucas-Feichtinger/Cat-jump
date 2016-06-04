@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import catjump.Cat;
 import catjump.Keying;
-import catjump.Reset;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,6 +39,8 @@ public class EscMenu extends JFrame implements ActionListener {
 
 		if (e.getSource() == restart) {
 			this.dispose();
+			
+			// hier sollte der reset() [aus der Keying Klasse] aufruf passieren, damit das spiel wieder neu startet
  		}
 
 		if (e.getSource() == einstellung) {
