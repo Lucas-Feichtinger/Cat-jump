@@ -43,8 +43,8 @@ public class EscMenu extends JFrame implements ActionListener {
 
 		if (e.getSource() == restart) {
 			this.dispose();
-			k.reset();
 			c.reset();
+			k.reset();
 		}
 
 		if (e.getSource() == einstellung) {

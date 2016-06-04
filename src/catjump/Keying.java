@@ -10,8 +10,6 @@ import java.awt.geom.Rectangle2D;
 
 public class Keying extends JPanel implements ActionListener {
 
-	// TODO Lucas: Jumping; Florian: Kollision
-
 	private EscMenu esc;
 	Cat c;
 	Blocks block;
@@ -68,18 +66,18 @@ public class Keying extends JPanel implements ActionListener {
 			if (collisionRight == false) {
 				c.move();
 			} else {
-				c.setKatzePos(c.getKatzePos() + 4);
+				c.setKatzePos(c.getKatzePos() + 6); // auf meinem laptop 4
 			}
 
 			if (collisionLeft == false) {
 				c.move();
 			} else if (collisionLeft == true) {
-				c.setKatzePos(c.getKatzePos() - 4);
+				c.setKatzePos(c.getKatzePos() - 6); // auf meinem laptop 4
 			}
 
 			collision();
 			if (falling == true && !c.jumping) {
-				c.KatzePosHoehe += 6;
+				c.KatzePosHoehe += 9; // auf meinem laptop 6
 			} else {
 				c.jump();
 			}

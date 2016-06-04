@@ -47,7 +47,7 @@ public class Blocks {
 		blocks.add(new Block(4700, heigth - 1410, 140, 790, gras));
 		blocks.add(new Block(4700, heigth - 365, 140, 450, gras));
 		blocks.add(new Block(4950, heigth - 325, 380, 100, gras));
-		blocks.add(new Block(5850, heigth - 405, 380, 100, gras));
+		blocks.add(new Block(5800, heigth - 405, 380, 100, gras));
 		blocks.add(new Block(5850, heigth - 80, 5000, 50, gras));
 		blocks.add(new Block(6450, heigth - 300, 450, 750, stone));
 		blocks.add(new Block(6900, heigth - 200, 1900, 150, stone));
