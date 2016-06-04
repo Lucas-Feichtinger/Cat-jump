@@ -58,11 +58,12 @@ public class Blocks {
 
 		// Fallen
 		Fallen.add(new Rectangle(4700, heigth - 375, 140, 10)); // laser
-		Fallen.add(new Rectangle(1400, heigth - 40, 250, 300)); // grube
-		Fallen.add(new Rectangle(3225, heigth - 40, 300, 300)); // grube
+		Fallen.add(new Rectangle(1400, heigth + 40, 250, 300)); // grube
+		Fallen.add(new Rectangle(3225, heigth + 40, 300, 300)); // grube
+		Fallen.add(new Rectangle(5850, heigth + 40, 300, 600)); // grube
 		Fallen.add(new Rectangle(1980, heigth - 450, 60, 60)); // spike
 	
-
+	}
 	public static List<Block> getBlocks() {
 		return blocks;
 	}

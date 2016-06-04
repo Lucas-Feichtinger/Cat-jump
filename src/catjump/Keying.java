@@ -7,32 +7,31 @@ import Menu.EscMenu;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Keying extends JPanel implements ActionListener {
 
 	// TODO Lucas: Jumping; Florian: Kollision
-	public int deadTime;
+
 	private EscMenu esc;
 	Cat c;
 	Blocks block;
-	public Image img;
-	public Image gras;
-	Timer time; // für Repaint
-	Thread animator; // für animationen
 
 	public boolean collisionBot = false;
-	private static boolean falling = false;
 	public boolean collisionRight = false;
 	public boolean collisionLeft = false;
 	public boolean dead = false;
+	private static boolean falling = false;
 	public static boolean escape = false;
 
-	int width = 1600;
-	int heigth = 768;
+	public int width = 1600;
+	public int heigth = 768;
+	public int deadTime;
+
+	public Image img;
+	public Image gras;
+
+	Timer time; // für Repaint
+	Thread animator; // für animationen
 
 	public Keying() {
 		block = new Blocks();
@@ -45,6 +44,18 @@ public class Keying extends JPanel implements ActionListener {
 		img = i.getImage();
 		time = new Timer(5, this);
 		time.start();
+		deadTime = 0;
+	}
+
+	public void reset() {
+		collisionBot = false;
+		falling = false;
+		collisionRight = false;
+		collisionLeft = false;
+		dead = false;
+		escape = false;
+		width = 1600;
+		heigth = 768;
 		deadTime = 0;
 	}
 
@@ -68,7 +79,7 @@ public class Keying extends JPanel implements ActionListener {
 
 			collision();
 			if (falling == true && !c.jumping) {
-				c.KatzePosHoehe += 7;
+				c.KatzePosHoehe += 6;
 			} else {
 				c.jump();
 			}
@@ -82,13 +93,6 @@ public class Keying extends JPanel implements ActionListener {
 			repaint();
 		}
 	}
-
-	/*
-	 * public void reset(){ collisionBot = false; falling = false;
-	 * collisionRigth = false; collisionLeft = false; dead = false; escape =
-	 * false; c.jumping = false; c.space = false; c.setKatzePos(200);
-	 * c.setKatzePosHoehe(580); c.setCatBoundingBox(); }
-	 */
 
 	private void ShowEscMenu() {
 		if (dead) {
@@ -128,19 +132,20 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.drawRect(b.x, b.y, b.width, b.height);
 
 		g2d.setColor(Color.BLUE);
-		
-		for(Rectangle falle : Blocks.getFallen()) {
+
+		for (Rectangle falle : Blocks.getFallen()) {
 			g2d.fillRect(falle.x, falle.y, falle.width, falle.height);
 		}
-		
+
 		g2d.setColor(Color.BLACK);
 		// hintergrund wände
 
-		for(Block block : Blocks.getBlocks()) {
+		for (Block block : Blocks.getBlocks()) {
 			g2d.drawImage(block.getTexture(), block.x, block.y, block.width, block.height, null);
 		}
-		
-		// TODO: image zu block dazuspeichern, damit wir wissen was wir anzeigen muessen
+
+		// TODO: image zu block dazuspeichern, damit wir wissen was wir anzeigen
+		// muessen
 	}
 
 	private class AL extends KeyAdapter {
@@ -163,12 +168,12 @@ public class Keying extends JPanel implements ActionListener {
 		for (Block block : Blocks.getBlocks()) {
 
 			CollisionDirection collision = testCollision(cat, block);
-			
-			if(collision == null) {
+
+			if (collision == null) {
 				continue;
 			}
-			
-			switch (collision) {				
+
+			switch (collision) {
 			case LEFT:
 				collisionLeft = true;
 				break;
@@ -184,10 +189,10 @@ public class Keying extends JPanel implements ActionListener {
 			}
 
 		}
-		
+
 		dead = false;
 		for (Rectangle falle : Blocks.getFallen()) {
-			if(testCollision(cat, falle) != null) {
+			if (testCollision(cat, falle) != null) {
 				dead = true;
 				break;
 			}
@@ -247,5 +252,21 @@ public class Keying extends JPanel implements ActionListener {
 
 	public void setFalling(boolean falling) {
 		this.falling = falling;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeigth() {
+		return heigth;
+	}
+
+	public void setHeigth(int heigth) {
+		this.heigth = heigth;
 	}
 }

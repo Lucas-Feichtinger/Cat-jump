@@ -27,6 +27,16 @@ public class Cat {
 		esc.setLayout(null);
 		KatzePosHoehe = 580;
 	}
+	
+	
+	public void reset(){
+		KatzePosHoehe = 580;
+		KatzenPos = 200;
+		jumping = false;
+		space = false;
+		movement = 0;
+		KatzenbewegungHoehe = 0;
+	}
 
 	public void move() {
 		KatzenPos = KatzenPos + movement;
@@ -134,6 +144,6 @@ public class Cat {
 	}
 
 	public Rectangle getCatBoundingBox() {
-		return new Rectangle(getKatzePos() + 200, getKatzePosHoehe(), 150, 80);
+		return new Rectangle(getKatzePos() + 225, getKatzePosHoehe(), 95, 80);
 	}
 }
