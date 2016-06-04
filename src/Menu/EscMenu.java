@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import catjump.Cat;
 import catjump.Keying;
+import catjump.Reset;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,17 +14,11 @@ public class EscMenu extends JFrame implements ActionListener {
 	private JButton restart;
 	private JButton einstellung;
 	private JButton ende;
-	public Keying k;
-	public Cat c;
 
 	int xSize = 1600;
 	int ySize = 768;
 
-	public EscMenu(String title) {
-		super(title);
-		
-		JLabel jlabel = new JLabel("You Died!");
-		
+	public EscMenu(String title) {		
 		restart = new JButton("Spiel restarten");
 		restart.setBounds(60, 40, 160, 40);
 		restart.addActionListener(this);
@@ -43,9 +39,7 @@ public class EscMenu extends JFrame implements ActionListener {
 
 		if (e.getSource() == restart) {
 			this.dispose();
-			c.reset();
-			k.reset();
-		}
+ 		}
 
 		if (e.getSource() == einstellung) {
 		}

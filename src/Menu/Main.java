@@ -1,12 +1,12 @@
-package catjump;
+package Menu;
 
 import javax.swing.*;
+import catjump.Keying;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main extends JFrame implements ActionListener {
 
-	//TODO Lucas: welt weiter bauen
 	private JButton start;
 	private JButton einstellung;
 	private JButton info;
@@ -19,16 +19,12 @@ public class Main extends JFrame implements ActionListener {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Main frame = new Main("Menü");

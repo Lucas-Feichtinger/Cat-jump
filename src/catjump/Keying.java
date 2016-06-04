@@ -46,15 +46,26 @@ public class Keying extends JPanel implements ActionListener {
 	}
 
 	public void reset() {
-		collisionBot = false;
-		falling = false;
-		collisionRight = false;
-		collisionLeft = false;
-		dead = false;
-		escape = false;
-		width = 1600;
-		heigth = 768;
-		deadTime = 0;
+		
+		//collisionBot = false;
+		//falling = false;
+		//collisionRight = false;
+		//collisionLeft = false;
+		//dead = false;
+		//escape = false;
+		//width = 1600;
+		//heigth = 768;
+		//deadTime = 0;
+		
+		setCollisionBot(true);
+		setFalling(false);
+		setCollisionRight(false);
+		setDead(false);
+		setEscape(false);
+		setWidth(1600);
+		setHeigth(768);
+		setDeadTime(0);
+		setTime(new Timer(5, this));
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -66,18 +77,18 @@ public class Keying extends JPanel implements ActionListener {
 			if (collisionRight == false) {
 				c.move();
 			} else {
-				c.setKatzePos(c.getKatzePos() + 6); // auf meinem laptop 4
+				c.setKatzePos(c.getKatzePos() + 4); // auf meinem laptop 4
 			}
 
 			if (collisionLeft == false) {
 				c.move();
 			} else if (collisionLeft == true) {
-				c.setKatzePos(c.getKatzePos() - 6); // auf meinem laptop 4
+				c.setKatzePos(c.getKatzePos() - 4); // auf meinem laptop 4
 			}
 
 			collision();
 			if (falling == true && !c.jumping) {
-				c.KatzePosHoehe += 9; // auf meinem laptop 6
+				c.KatzePosHoehe += 6; // auf meinem laptop 6
 			} else {
 				c.jump();
 			}
@@ -142,8 +153,6 @@ public class Keying extends JPanel implements ActionListener {
 			g2d.drawImage(block.getTexture(), block.x, block.y, block.width, block.height, null);
 		}
 
-		// TODO: image zu block dazuspeichern, damit wir wissen was wir anzeigen
-		// muessen
 	}
 
 	private class AL extends KeyAdapter {
@@ -266,5 +275,53 @@ public class Keying extends JPanel implements ActionListener {
 
 	public void setHeigth(int heigth) {
 		this.heigth = heigth;
+	}
+
+	public boolean isCollisionBot() {
+		return collisionBot;
+	}
+
+	public void setCollisionBot(boolean collisionBot) {
+		this.collisionBot = collisionBot;
+	}
+
+	public boolean isCollisionRight() {
+		return collisionRight;
+	}
+
+	public void setCollisionRight(boolean collisionRight) {
+		this.collisionRight = collisionRight;
+	}
+
+	public boolean isCollisionLeft() {
+		return collisionLeft;
+	}
+
+	public void setCollisionLeft(boolean collisionLeft) {
+		this.collisionLeft = collisionLeft;
+	}
+
+	public boolean isDead() {
+		return dead;
+	}
+
+	public void setDead(boolean dead) {
+		this.dead = dead;
+	}
+
+	public int getDeadTime() {
+		return deadTime;
+	}
+
+	public void setDeadTime(int deadTime) {
+		this.deadTime = deadTime;
+	}
+
+	public Timer getTime() {
+		return time;
+	}
+
+	public void setTime(Timer time) {
+		this.time = time;
 	}
 }
