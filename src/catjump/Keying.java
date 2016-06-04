@@ -77,18 +77,18 @@ public class Keying extends JPanel implements ActionListener {
 			if (collisionRight == false) {
 				c.move();
 			} else {
-				c.setKatzePos(c.getKatzePos() + 4); // auf meinem laptop 4
+				c.setKatzePos(c.getKatzePos() + 4);
 			}
 
 			if (collisionLeft == false) {
 				c.move();
 			} else if (collisionLeft == true) {
-				c.setKatzePos(c.getKatzePos() - 4); // auf meinem laptop 4
+				c.setKatzePos(c.getKatzePos() - 4);
 			}
 
 			collision();
 			if (falling == true && !c.jumping) {
-				c.KatzePosHoehe += 6; // auf meinem laptop 6
+				c.KatzePosHoehe += 6; 
 			} else {
 				c.jump();
 			}
@@ -122,20 +122,11 @@ public class Keying extends JPanel implements ActionListener {
 
 		// background
 		g2d.drawImage(img, 0, 0, null);
-		g2d.drawImage(img, 1485, 0, null);
-		g2d.drawImage(img, 3485, 0, null);
-		g2d.drawImage(img, 5485, 0, null);
-		g2d.drawImage(img, 7485, 0, null);
 
 		g.translate(-c.getKatzePos(), 0);
 
 		// character
-		g2d.drawImage(c.getImage(), c.getKatzePos() + 200, c.getKatzePosHoehe(), null);
-		Rectangle b = c.getCatBoundingBox();
-		g2d.setColor(Color.RED);
-		g2d.drawRect(b.x, b.y, b.width, b.height);
-
-		
+		g2d.drawImage(c.getImage(), c.getKatzePos() + 200, c.getKatzePosHoehe(), null);		
 		
 		for (Block block : Blocks.getBlocks()) {
 			g2d.drawImage(block.getTexture(), block.x, block.y, block.width, block.height, null);

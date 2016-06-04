@@ -34,7 +34,7 @@ public class Blocks {
 		blocks = new ArrayList<Block>();
 
 		// Blöcke
-		blocks.add(new Block(0, heigth - 600, 300, 1200, gras));
+		blocks.add(new Block(-300, heigth - 600, 600, 600, gras));
 		blocks.add(new Block(1020, heigth - 240, 380, 300, gras));
 		blocks.add(new Block(1660, heigth - 390, 380, 100, gras));
 		blocks.add(new Block(2190, heigth - 490, 280, 100, gras));
@@ -51,6 +51,8 @@ public class Blocks {
 		blocks.add(new Block(7300, heigth - 450, 380, 100, stone));
 		blocks.add(new Block(8000, heigth - 500, 380, 100, stone));
 		blocks.add(new Block(8800, heigth - 300, 450, 750, stone));
+		blocks.add(new Block(10300, heigth - 300, 280, 100, stone));
+		
 		
 		blocks.add(new Block(300, heigth - 80, 720, 500, gras));
 		blocks.add(new Block(1650, heigth - 80, 1600, 500, gras));
@@ -65,8 +67,9 @@ public class Blocks {
 		fallen.add(new Block(1400, heigth + 50, 250, 300, spike)); // grube
 		fallen.add(new Block(3235, heigth + 50, 300, 300, spike)); // grube
 		fallen.add(new Block(5310, heigth + 50, 540, 400, lava)); // grube
-		fallen.add(new Block(1980, heigth - 450, 60, 60, spike)); // Spike
+		fallen.add(new Block(1960, heigth - 470, 80, 80, spike)); // Spike
 		fallen.add(new Block(4700, heigth - 375, 140, 10, spike)); // Laser
+		fallen.add(new Block(9900, heigth - 150, 80, 80, spike)); // spike
 	
 	}
 	public static List<Block> getBlocks() {

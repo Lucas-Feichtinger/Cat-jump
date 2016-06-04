@@ -58,14 +58,10 @@ public class Cat {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_D) {
-
-			movement = 2;  // auf meinem laptop 2
-
+			movement = 3;  
 		}
 		if (key == KeyEvent.VK_A) {
-
-			movement = -2; // auf meinem laptop 2
-
+			movement = -3; 
 		}
 
 		if (key == KeyEvent.VK_ESCAPE) {
@@ -73,7 +69,7 @@ public class Cat {
 		}
 
 		if (key == KeyEvent.VK_SPACE && jumping == false && k.isFalling() == false) {
-			KatzenbewegungHoehe = -5; // auf meinem laptop 5
+			KatzenbewegungHoehe = -8;
 			jumping = true;
 			space = true;
 			new Thread(new ThreadCat(this)).start();
