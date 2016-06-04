@@ -2,17 +2,16 @@ package catjump;
 
 import javax.swing.*;
 
-import Menu.EscMenu;
-
+import Menu.EscFrame;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
 
 public class Keying extends JPanel implements ActionListener {
 
-	private EscMenu esc;
-	Cat c;
-	Blocks block;
+	public Cat c;
+	public Blocks block;
+	public EscFrame frame;
 
 	public boolean collisionBot = false;
 	public boolean collisionRight = false;
@@ -34,6 +33,7 @@ public class Keying extends JPanel implements ActionListener {
 	public Keying() {
 		block = new Blocks();
 		c = new Cat();
+		
 		addKeyListener(new AL());
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("bg.png");
@@ -108,13 +108,8 @@ public class Keying extends JPanel implements ActionListener {
 			if (deadTime <= 100) {
 				deadTime += 1;
 			} else {
-				if (esc == null) {
-					esc = new EscMenu("Menü");
-					esc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					esc.setSize(300, 320);
-					esc.setLocationRelativeTo(null);
-					esc.setLayout(null);
-					esc.setVisible(true);
+				if (frame == null) {
+					frame = new EscFrame();
 				}
 			}
 		}

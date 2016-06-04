@@ -29,7 +29,7 @@ public class Main extends JFrame implements ActionListener {
 		}
 		Main frame = new Main("Menü");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(400, 400);
+		frame.setSize(400, 390);
 		frame.setLocationRelativeTo(null);
 		frame.setLayout(null);
 		frame.setVisible(true);
@@ -39,22 +39,22 @@ public class Main extends JFrame implements ActionListener {
 		super(title);
 
 		start = new JButton("Spiel starten");
-		start.setBounds(120, 40, 160, 40);
+		start.setBounds(110, 30, 180, 50);
 		start.addActionListener(this);
 		add(start);
 
 		einstellung = new JButton("Einstellungen");
-		einstellung.setBounds(120, 120, 160, 40);
+		einstellung.setBounds(110, 110, 180, 50);
 		einstellung.addActionListener(this);
 		add(einstellung);
 
 		info = new JButton("Credits");
-		info.setBounds(120, 200, 160, 40);
+		info.setBounds(110, 190, 180, 50);
 		info.addActionListener(this);
 		add(info);
 
 		ende = new JButton("Ende");
-		ende.setBounds(120, 280, 160, 40);
+		ende.setBounds(110, 270, 180, 50);
 		ende.addActionListener(this);
 		add(ende);
 	}
@@ -75,7 +75,7 @@ public class Main extends JFrame implements ActionListener {
 		if (e.getSource() == info) {
 			Object[] options = { "OK" };
 
-			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger, Florian Czakoi hat rumgepfuscht!", "Information",
+			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger, Florian Czakoi hat rumgepfuscht!", "Credits",
 					JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 		}
 

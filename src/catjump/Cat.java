@@ -6,11 +6,12 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import Menu.EscMenu;
+import Menu.EscFrame;
 
 public class Cat {
-	Keying k;
-	EscMenu esc;
+	public Keying k;
+	public EscFrame frame;
+	
 	int KatzenPos, movement, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
@@ -20,11 +21,6 @@ public class Cat {
 	public Cat() {
 		catImg = i.getImage();
 		KatzenPos = 200;
-		esc = new EscMenu("Menü");
-		esc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		esc.setSize(300, 320);
-		esc.setLocationRelativeTo(null);
-		esc.setLayout(null);
 		KatzePosHoehe = 580;
 	}
 	
@@ -73,7 +69,7 @@ public class Cat {
 		}
 
 		if (key == KeyEvent.VK_ESCAPE) {
-			esc.setVisible(true);
+			frame = new EscFrame();
 		}
 
 		if (key == KeyEvent.VK_SPACE && jumping == false && k.isFalling() == false) {
@@ -81,9 +77,6 @@ public class Cat {
 			jumping = true;
 			space = true;
 			new Thread(new ThreadCat(this)).start();
-		}
-		if (key == KeyEvent.VK_ESCAPE) {
-			esc.setVisible(true);
 		}
 	}
 
@@ -100,10 +93,6 @@ public class Cat {
 		if (key == KeyEvent.VK_SPACE) {
 			space = false;
 			KatzenbewegungHoehe = 0;
-		}
-
-		if (key == KeyEvent.VK_ESCAPE) {
-			esc.setVisible(false);
 		}
 	}
 

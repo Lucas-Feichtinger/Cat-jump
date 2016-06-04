@@ -2,11 +2,8 @@ package catjump;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.ImageIcon;
-
 import java.awt.Image;
-import java.awt.Rectangle;
 
 public class Blocks {
 	private static List<Block> fallen;
