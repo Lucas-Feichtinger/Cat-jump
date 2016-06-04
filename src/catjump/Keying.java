@@ -66,6 +66,8 @@ public class Keying extends JPanel implements ActionListener {
 		setHeigth(768);
 		setDeadTime(0);
 		setTime(new Timer(5, this));
+		
+		c.reset();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -109,12 +111,19 @@ public class Keying extends JPanel implements ActionListener {
 				deadTime += 1;
 			} else {
 				if (esc == null) {
-					esc = new EscMenu("Menü");
-					esc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					esc.setSize(300, 320);
-					esc.setLocationRelativeTo(null);
-					esc.setLayout(null);
-					esc.setVisible(true);
+					// auskommentiert, damit man sehen kann das reset() wirklich funktioniert
+//					esc = new EscMenu("Menü");
+//					esc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//					esc.setSize(300, 320);
+//					esc.setLocationRelativeTo(null);
+//					esc.setLayout(null);
+//					esc.setVisible(true);
+
+					// die reset methode funktioniert, (probieren sie das spiel aus!)...
+					// das einzige was noch fehlt, ist dass sie die reset methode aufrufen,
+					// wenn man "spiel restarten" klickt...
+					// dass muss dann aber im event handler vom button passieren
+					reset();
 				}
 			}
 		}
