@@ -140,19 +140,16 @@ public class Keying extends JPanel implements ActionListener {
 		g2d.setColor(Color.RED);
 		g2d.drawRect(b.x, b.y, b.width, b.height);
 
-		g2d.setColor(Color.BLUE);
-
-		for (Rectangle falle : Blocks.getFallen()) {
-			g2d.fillRect(falle.x, falle.y, falle.width, falle.height);
-		}
-
-		g2d.setColor(Color.BLACK);
-		// hintergrund wände
-
+		
+		
 		for (Block block : Blocks.getBlocks()) {
 			g2d.drawImage(block.getTexture(), block.x, block.y, block.width, block.height, null);
 		}
-
+		
+		
+		for (Block falle : Blocks.getFallen()) {
+			g2d.drawImage(falle.getTexture(), falle.x, falle.y, falle.width, falle.height, null);
+		}
 	}
 
 	private class AL extends KeyAdapter {
