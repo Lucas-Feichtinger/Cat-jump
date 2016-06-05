@@ -13,6 +13,7 @@ public class Blocks {
 	public Image stone;
 	public Image lava;
 	public Image spike;
+	public Image flagge;
 
 	int heigth = 768;
 	int width = 1600;
@@ -22,12 +23,14 @@ public class Blocks {
 		ImageIcon stein = new ImageIcon("Stein.png");
 		ImageIcon magma = new ImageIcon("Lava.png");
 		ImageIcon spikes = new ImageIcon("Spikes.png");
+		ImageIcon fahne = new ImageIcon("Flagge.png");
 
+		flagge = fahne.getImage();
 		gras = grass.getImage();
 		lava = magma.getImage();
 		stone = stein.getImage();
 		spike = spikes.getImage();
-		
+
 		fallen = new ArrayList<Block>();
 		blocks = new ArrayList<Block>();
 		win = new ArrayList<Block>();
@@ -74,8 +77,7 @@ public class Blocks {
 		fallen.add(new Block(4275, heigth - 360, 80, 80, spike)); // spike
 		fallen.add(new Block(6450, heigth - 380, 80, 80, spike)); // spike
 
-		
-		win.add(new Block(11800, heigth - 550, 100, 250, gras));
+		win.add(new Block(11800, heigth - 545, 200, 250, flagge));
 
 	}
 
@@ -86,7 +88,7 @@ public class Blocks {
 	public static List<Block> getFallen() {
 		return fallen;
 	}
-	
+
 	public static List<Block> getWin() {
 		return win;
 	}

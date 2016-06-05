@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class Main extends JFrame implements ActionListener {
 
 	private JButton start;
-	private JButton einstellung;
+	private JButton steuerung;
 	private JButton info;
 	private JButton ende;
 
@@ -43,10 +43,10 @@ public class Main extends JFrame implements ActionListener {
 		start.addActionListener(this);
 		add(start);
 
-		einstellung = new JButton("Einstellungen");
-		einstellung.setBounds(110, 110, 180, 50);
-		einstellung.addActionListener(this);
-		add(einstellung);
+		steuerung = new JButton("Steuerung");
+		steuerung.setBounds(110, 110, 180, 50);
+		steuerung.addActionListener(this);
+		add(steuerung);
 
 		info = new JButton("Credits");
 		info.setBounds(110, 190, 180, 50);
@@ -75,11 +75,12 @@ public class Main extends JFrame implements ActionListener {
 		if (e.getSource() == info) {
 			Object[] options = { "OK" };
 
-			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger, Florian Czakoi hat rumgepfuscht!", "Credits",
-					JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger, Florian Czakoi hat rumgepfuscht!",
+					"Credits", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 		}
 
-		if (e.getSource() == einstellung) {
+		if (e.getSource() == steuerung) {
+			SteuerungFrame f = new SteuerungFrame();
 		}
 
 		if (e.getSource() == ende) {
