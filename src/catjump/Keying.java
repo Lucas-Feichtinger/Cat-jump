@@ -9,16 +9,17 @@ import java.awt.geom.Rectangle2D;
 
 public class Keying extends JPanel implements ActionListener {
 
-	public Cat c;
-	public Blocks block;
+	private Cat c = new Cat();
+	public Blocks block = new Blocks();
 	public EscFrame frame;
 
 	public boolean collisionBot = false;
 	public boolean collisionRight = false;
 	public boolean collisionLeft = false;
 	public boolean dead = false;
-	private static boolean falling = false;
+	public static boolean falling = false;
 	public static boolean escape = false;
+	public boolean won = false;
 
 	public int width = 1600;
 	public int heigth = 768;
@@ -31,9 +32,6 @@ public class Keying extends JPanel implements ActionListener {
 	Thread animator; // für animationen
 
 	public Keying() {
-		block = new Blocks();
-		c = new Cat();
-		
 		addKeyListener(new AL());
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("bg.png");
@@ -46,17 +44,17 @@ public class Keying extends JPanel implements ActionListener {
 	}
 
 	public void reset() {
-		
-		//collisionBot = false;
-		//falling = false;
-		//collisionRight = false;
-		//collisionLeft = false;
-		//dead = false;
-		//escape = false;
-		//width = 1600;
-		//heigth = 768;
-		//deadTime = 0;
-		
+
+		// collisionBot = false;
+		// falling = false;
+		// collisionRight = false;
+		// collisionLeft = false;
+		// dead = false;
+		// escape = false;
+		// width = 1600;
+		// heigth = 768;
+		// deadTime = 0;
+
 		setCollisionBot(true);
 		setFalling(false);
 		setCollisionRight(false);
@@ -88,7 +86,7 @@ public class Keying extends JPanel implements ActionListener {
 
 			collision();
 			if (falling == true && !c.jumping) {
-				c.KatzePosHoehe += 6; 
+				c.KatzePosHoehe += 6;
 			} else {
 				c.jump();
 			}
@@ -113,6 +111,12 @@ public class Keying extends JPanel implements ActionListener {
 				}
 			}
 		}
+
+		if (won) {
+			if (frame == null) {
+				frame = new EscFrame();
+			}
+		}
 	}
 
 	public void paint(Graphics g) {
@@ -126,13 +130,12 @@ public class Keying extends JPanel implements ActionListener {
 		g.translate(-c.getKatzePos(), 0);
 
 		// character
-		g2d.drawImage(c.getImage(), c.getKatzePos() + 200, c.getKatzePosHoehe(), null);		
-		
+		g2d.drawImage(c.getImage(), c.getKatzePos() + 200, c.getKatzePosHoehe(), null);
+
 		for (Block block : Blocks.getBlocks()) {
 			g2d.drawImage(block.getTexture(), block.x, block.y, block.width, block.height, null);
 		}
-		
-		
+
 		for (Block falle : Blocks.getFallen()) {
 			g2d.drawImage(falle.getTexture(), falle.x, falle.y, falle.width, falle.height, null);
 		}
@@ -177,13 +180,19 @@ public class Keying extends JPanel implements ActionListener {
 				collisionBot = true;
 				break;
 			}
-
 		}
 
 		dead = false;
-		for (Rectangle falle : Blocks.getFallen()) {
+		for (Block falle : Blocks.getFallen()) {
 			if (testCollision(cat, falle) != null) {
 				dead = true;
+				break;
+			}
+		}
+
+		for (Block win : Blocks.getWin()) {
+			if (testCollision(cat, win) != null) {
+				won = true;
 				break;
 			}
 		}

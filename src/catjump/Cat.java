@@ -9,9 +9,8 @@ import javax.swing.JFrame;
 import Menu.EscFrame;
 
 public class Cat {
-	public Keying k;
 	public EscFrame frame;
-	
+
 	int KatzenPos, movement, KatzePosHoehe, KatzenbewegungHoehe;
 	Image catImg;
 	ImageIcon i = new ImageIcon("Katze.png");
@@ -23,9 +22,8 @@ public class Cat {
 		KatzenPos = 200;
 		KatzePosHoehe = 580;
 	}
-	
-	
-	public void reset(){
+
+	public void reset() {
 		KatzePosHoehe = 580;
 		KatzenPos = 200;
 		jumping = false;
@@ -58,17 +56,17 @@ public class Cat {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_D) {
-			movement = 3;  
+			movement = 3;
 		}
 		if (key == KeyEvent.VK_A) {
-			movement = -3; 
+			movement = -3;
 		}
 
 		if (key == KeyEvent.VK_ESCAPE) {
 			frame = new EscFrame();
 		}
 
-		if (key == KeyEvent.VK_SPACE && jumping == false && k.isFalling() == false) {
+		if (key == KeyEvent.VK_SPACE && jumping == false && Keying.isFalling() == false) {
 			KatzenbewegungHoehe = -8;
 			jumping = true;
 			space = true;
