@@ -42,28 +42,9 @@ public class Keying extends JPanel implements ActionListener {
 		time.start();
 		deadTime = 0;
 	}
-
+	
 	public void reset() {
 
-		// collisionBot = false;
-		// falling = false;
-		// collisionRight = false;
-		// collisionLeft = false;
-		// dead = false;
-		// escape = false;
-		// width = 1600;
-		// heigth = 768;
-		// deadTime = 0;
-
-		setCollisionBot(true);
-		setFalling(false);
-		setCollisionRight(false);
-		setDead(false);
-		setEscape(false);
-		setWidth(1600);
-		setHeigth(768);
-		setDeadTime(0);
-		setTime(new Timer(5, this));
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -71,7 +52,7 @@ public class Keying extends JPanel implements ActionListener {
 
 		ShowEscMenu();
 
-		if (dead != true) {
+		if (dead != true && won != true) {
 			if (collisionRight == false) {
 				c.move();
 			} else {
@@ -123,7 +104,7 @@ public class Keying extends JPanel implements ActionListener {
 		super.paint(g);
 
 		Graphics2D g2d = (Graphics2D) g;
-
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		// background
 		g2d.drawImage(img, 0, 0, null);
 
@@ -138,6 +119,10 @@ public class Keying extends JPanel implements ActionListener {
 
 		for (Block falle : Blocks.getFallen()) {
 			g2d.drawImage(falle.getTexture(), falle.x, falle.y, falle.width, falle.height, null);
+		}
+
+		for (Block win : Blocks.getWin()) {
+			g2d.drawImage(win.getTexture(), win.x, win.y, win.width, win.height, null);
 		}
 	}
 

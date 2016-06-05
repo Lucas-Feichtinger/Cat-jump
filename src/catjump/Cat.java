@@ -24,12 +24,7 @@ public class Cat {
 	}
 
 	public void reset() {
-		KatzePosHoehe = 580;
-		KatzenPos = 200;
-		jumping = false;
-		space = false;
-		movement = 0;
-		KatzenbewegungHoehe = 0;
+
 	}
 
 	public void move() {
@@ -56,10 +51,10 @@ public class Cat {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_D) {
-			movement = 3;
+			movement = 2;
 		}
 		if (key == KeyEvent.VK_A) {
-			movement = -3;
+			movement = -2;
 		}
 
 		if (key == KeyEvent.VK_ESCAPE) {
@@ -67,7 +62,7 @@ public class Cat {
 		}
 
 		if (key == KeyEvent.VK_SPACE && jumping == false && Keying.isFalling() == false) {
-			KatzenbewegungHoehe = -8;
+			KatzenbewegungHoehe = -5;
 			jumping = true;
 			space = true;
 			new Thread(new ThreadCat(this)).start();
@@ -128,5 +123,29 @@ public class Cat {
 
 	public Rectangle getCatBoundingBox() {
 		return new Rectangle(getKatzePos() + 225, getKatzePosHoehe(), 95, 80);
+	}
+
+	public int getKatzenPos() {
+		return KatzenPos;
+	}
+
+	public void setKatzenPos(int katzenPos) {
+		KatzenPos = katzenPos;
+	}
+
+	public int getMovement() {
+		return movement;
+	}
+
+	public void setMovement(int movement) {
+		this.movement = movement;
+	}
+
+	public boolean isSpace() {
+		return space;
+	}
+
+	public void setSpace(boolean space) {
+		this.space = space;
 	}
 }
