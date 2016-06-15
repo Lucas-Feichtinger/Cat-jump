@@ -23,10 +23,6 @@ public class Cat {
 		KatzePosHoehe = 580;
 	}
 
-	public void reset() {
-
-	}
-
 	public void move() {
 		KatzenPos = KatzenPos + movement;
 	}

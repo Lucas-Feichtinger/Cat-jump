@@ -42,10 +42,6 @@ public class Keying extends JPanel implements ActionListener {
 		time.start();
 		deadTime = 0;
 	}
-	
-	public void reset() {
-
-	}
 
 	public void actionPerformed(ActionEvent e) {
 		collision();

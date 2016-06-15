@@ -72,10 +72,11 @@ public class Main extends JFrame implements ActionListener {
 			this.dispose();
 		}
 
+		
 		if (e.getSource() == info) {
 			Object[] options = { "OK" };
 
-			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger, Florian Czakoi hat rumgepfuscht!",
+			JOptionPane.showOptionDialog(null, "Programmiert von Lucas Feichtinger und Florian Czakoi!",
 					"Credits", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 		}
 
@@ -86,6 +87,9 @@ public class Main extends JFrame implements ActionListener {
 		if (e.getSource() == ende) {
 			System.exit(0);
 		}
-
+	}
+	
+	public void restart(){
+		this.dispose();
 	}
 }
